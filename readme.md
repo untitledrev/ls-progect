@@ -6,6 +6,6 @@
 
 #### Контакты
 
-Телеграмм: @simple_ivan
-Почта: untitledrev@gmail.com
-Slack: @ivanii
+- Телеграмм: @simple_ivan
+- Почта: untitledrev@gmail.com
+- Slack: @ivanii
