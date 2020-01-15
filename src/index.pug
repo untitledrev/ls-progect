@@ -9,7 +9,59 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+      .welcome#welcome    
+        .parallax
+          +image('content/phone_dev-min.jpg', 'top_fone_1')     
+        section.one-block
+          header.header
+            .container
+              .top-block.row
+                .logo.top-block__element.col-lg-2
+                  a(href="#").logo__link ИИ
+                .menu.top-block__element.col-lg-8
+                  +nav('nav')            
+                +sohibal('sohibal',['instagram','vkontakte','github'],'top-block__element col-lg-2')
+          .title-site
+            .title-site__left
+              span.title-site__left__text Личный сайт
+              span.title-site__left__text веб разработчика
+            .title-site__right
+              span.title-site__right__text Иван
+              span.title-site__right__text Ивашов
+          .scroll
+            a.scroll__link(href="#about")
+              .scroll__text Скролл
+              .scroll__icon
+                +icon('scroll', 'scroll__icon')
+        section#about.about
+          .container.row
+            .about__container.col-lg-8
+              .about__block.row
+                .about__left.col-lg-4
+                  .about__image
+                    +image('content/photo__my.jpg', 'photo__my')
+                  .about__desciption
+                    +desciption('desciption-block')
+                .about__right.col-lg-8
+                  .about__title-mini !{about.hellow}
+                  h2.about__title !{about.name}
+                  .about__text 
+                    p !{about.text}
+                  .about__text-dop
+                    p !{about.text_dop}
+        section#skills.skills
+          .container
+            .skills__container.col-lg-9
+              .skills__title
+              .skills__text
+              .skills__block
+                +skills_1
+
+        section#work.work
+        section#reviews.reviews
+        section#contact.contact
+        footer#footer.footer
+      //- .maincontent
+      //-   +image('content/user.jpg', 'user-pic')
+      //-   +icon('link', 'link-class')
+      //-   .icon-bg

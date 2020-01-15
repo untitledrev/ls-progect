@@ -1,3 +1,14 @@
+
+- 
+  var about = {
+      "hellow":"Привет, меня зовут" ,
+      "name" : "Ивашов Иван" , 
+      "text" : "Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.",
+      "text_dop" : "Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!"
+      }
+
+//-----------------------------------
+
 mixin icon(name, className)
   - var icon = require(`images/icons/${name}.svg`);
   svg(class=className viewBox=icon.viewBox preserveAspectRatio="none")
@@ -5,3 +16,57 @@ mixin icon(name, className)
 
 mixin image(path, className)
   img(src=require(`images/${path}`) class=className)
+
+
+mixin nav(className,activeItem)
+  -   
+    var menu = [
+              {'url': 'welcome','name' : 'Главная'},
+              {'url': 'about','name' : 'Обо мне'},
+              {'url': 'skills','name' : 'Навыки'},
+              {'url': 'work','name' : 'Работа'},   
+              {'url': 'reviews','name' : 'Отзывы'},    
+              {'url': 'contact','name' : 'Связаться'}                                         
+                  ]
+  nav(class=`${className}`)
+    ul(class=`${className}__list`)
+      each item in menu
+        li(class=`${className}__item`)
+          a(class=`${className}__link` href=`#${item.url}`) #{item.name}
+
+mixin sohibal(classNameS,items,classNameD)
+  div(class=`${classNameS} ${classNameD}`)
+    ul(class=`${classNameS}__list`)
+      each item in items
+        li(class=`${classNameS}__item`)
+          a(class=`${classNameS}__link` href="#")
+            +icon(`${item}`, 'link-class')
+mixin desciption(className)
+  -
+    var items = [
+          {'name': 'Проживаю','desciption' : 'Москва'},
+          {'name': 'Возраст','desciption' : '27 лет'},     
+          {'name': 'Родился','desciption' : '7 марта 1992'}      
+    ]
+  ul(class=`${className}__list`)
+    each item in items
+      li(class=`${className}__item`)
+        span(class=`${className}__name`) #{item.name}
+        span(class=`${className}__desciption`) #{item.desciption}
+
+mixin skills_1()
+
+  - var title = 'Front-end'
+  -
+    var skills = [
+          {'name': 'HTML5','prosent' : '10'},
+          {'name': 'CSS3','prosent' : '15'},
+          {'name': 'Javascript','prosent' : '25'},      
+          {'name': 'Jquery и Vue.js','prosent' : '55'}      
+    ]
+
+  .skills__title #{title}
+  ul.skills__list
+    each item in skills
+      li(class=`skills__item`)
+        span(class=`skills__item__title`) #{item.name}
