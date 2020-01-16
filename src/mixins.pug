@@ -1,11 +1,90 @@
+-   
+  var menu = [
+              {'url': 'welcome','name' : 'Главная'},
+              {'url': 'about','name' : 'Обо мне'},
+              {'url': 'skills','name' : 'Навыки'},
+              {'url': 'work','name' : 'Работа'},   
+              {'url': 'reviews','name' : 'Отзывы'},    
+              {'url': 'contact','name' : 'Связаться'}                                         
+                  ]
+
+-
+  var about__info = [
+          {'name': 'Проживаю','desciption' : 'Москва'},
+          {'name': 'Возраст','desciption' : '27 лет'},     
+          {'name': 'Родился','desciption' : '7 марта 1992'}      
+    ]
+
 
 - 
   var about = {
+      "site_name" : "Личный сайт",
+      "site_name_2" : "веб разработчика" ,
       "hellow":"Привет, меня зовут" ,
-      "name" : "Ивашов Иван" , 
+      "fistname" : "Ивашов",
+      "name" : "Иван" , 
       "text" : "Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.",
-      "text_dop" : "Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!"
+      "text_dop" : "Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!",
+      "thoughts" : "Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете",
+      "thoughts_a" : "Martin Golding"
       }
+- 
+  var skill = {
+      "skill_title":"Чем я могу быть полезен вам",
+      "skill_text":"Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!"
+      }
+
+- var work_title = 'Мои работы'
+
+- 
+  var wors =[
+
+  {
+    "skill" : ["HTML", "CSS" , "Javascript"],
+    "image" : "work.jpg",
+    "name": "Сайт школы образования" ,
+    "url" : "google.com", 
+    "des" : "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+  }
+  ,
+
+  {
+    "skill" : ["HTML", "CSS" , "Javascript"],
+    "image" : "work2.jpg",
+    "name": "Сайт школы образования 2" ,
+    "url" : "google.com", 
+    "des" : "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+  }
+  ,
+
+  {
+    "skill" : ["HTML", "CSS" , "Javascript"],
+    "image" : "work3.jpg",
+    "name": "Сайт школы образования 3" ,
+    "url" : "google.com", 
+    "des" : "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+  }
+  ,
+
+  {
+    "skill" : ["HTML", "CSS" , "Javascript"],
+    "image" : "work4.jpg",
+    "name": "Сайт школы образования 3" ,
+    "url" : "google.com", 
+    "des" : "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+  }        
+    
+  ]
+
+
+- var skills_title = 'Front-end'
+-
+  var skills = [
+          {'name': 'HTML5','prosent' : '10'},
+          {'name': 'CSS3','prosent' : '15'},
+          {'name': 'Javascript','prosent' : '25'},      
+          {'name': 'Jquery и Vue.js','prosent' : '55'}      
+    ]
 
 //-----------------------------------
 
@@ -18,16 +97,33 @@ mixin image(path, className)
   img(src=require(`images/${path}`) class=className)
 
 
+mixin title__site(className)
+    span(class=`title-site__left__text${className}`)  #{about.site_name} 
+    span(class=`title-site__left__text${className}`)   #{about.site_name_2} 
+
+
+mixin title__name(className)
+    span(class=`title-site__right__text${className}`)  #{about.name}
+    span(class=`title-site__right__text${className}`)  #{about.fistname}  
+
+
+mixin title(className)
+  div(class=`title-site__left${className}`)
+    +title__site(`${className}`)
+  div(class=`title-site__right${className}`)  
+    +title__name(`${className}`)
+
+
+mixin title_footer(className)
+  div(class=`title-site__left${className}`)
+    +title__name(`${className}`)
+  div(class=`title-site__right${className}`)  
+    +title__site(`${className}`)  
+
+
+
 mixin nav(className,activeItem)
-  -   
-    var menu = [
-              {'url': 'welcome','name' : 'Главная'},
-              {'url': 'about','name' : 'Обо мне'},
-              {'url': 'skills','name' : 'Навыки'},
-              {'url': 'work','name' : 'Работа'},   
-              {'url': 'reviews','name' : 'Отзывы'},    
-              {'url': 'contact','name' : 'Связаться'}                                         
-                  ]
+
   nav(class=`${className}`)
     ul(class=`${className}__list`)
       each item in menu
@@ -42,31 +138,41 @@ mixin sohibal(classNameS,items,classNameD)
           a(class=`${classNameS}__link` href="#")
             +icon(`${item}`, 'link-class')
 mixin desciption(className)
-  -
-    var items = [
-          {'name': 'Проживаю','desciption' : 'Москва'},
-          {'name': 'Возраст','desciption' : '27 лет'},     
-          {'name': 'Родился','desciption' : '7 марта 1992'}      
-    ]
+
   ul(class=`${className}__list`)
-    each item in items
+    each item in about__info
       li(class=`${className}__item`)
-        span(class=`${className}__name`) #{item.name}
+        span(class=`${className}__name`) #{item.name}:
         span(class=`${className}__desciption`) #{item.desciption}
 
 mixin skills_1()
-
-  - var title = 'Front-end'
-  -
-    var skills = [
-          {'name': 'HTML5','prosent' : '10'},
-          {'name': 'CSS3','prosent' : '15'},
-          {'name': 'Javascript','prosent' : '25'},      
-          {'name': 'Jquery и Vue.js','prosent' : '55'}      
-    ]
-
-  .skills__title #{title}
-  ul.skills__list
+  .skills__block__title #{skills_title}
+  ul.skills__list.progress
     each item in skills
       li(class=`skills__item`)
-        span(class=`skills__item__title`) #{item.name}
+        span(class=`skills__item__title` data-name=`${item.prosent}%` data-percent=`${item.name}`)
+        span.skills__item__svg-contener #{item.name}
+
+
+mixin wors_privie(className,type)
+  ul(class=`${className}__list`)
+
+    each item, index in wors
+      - var number = index + 1
+      if index == 0
+        - var active= 'active'
+      else
+        - var active= ''
+
+      li(class=`${className}__item ${active}`)
+        +image(`content/${item.image}`, `${className}__pictere`)
+        if type == 1
+          span(class=`${className}__bg-number`) #{number}
+  
+    if type == 2
+      li.strekli__ypr__item
+        .strekli__ypr
+          .strekli_right.active
+            +icon('arrow-down', 'strekli_right__svg')        
+          .strekli_left
+            +icon('arrow-down', 'strekli_left__svg')

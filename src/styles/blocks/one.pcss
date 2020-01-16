@@ -1,7 +1,7 @@
 .header
 {
 }
-.welcome , .about
+.welcome , .about , .skills
 {
  position: relative;
  margin: 0 auto;
@@ -168,11 +168,11 @@ border-radius: 50%;
 }
 .about__desciption
 {
-    padding-top: 80px;  
+    padding-top: 72px;  
 }
 .about__right 
 {
-  padding-left: 135px;
+    padding-left: 115px;
 }
 
 .desciption-block__name
@@ -190,7 +190,7 @@ text-align: right;
 
 .desciption-block__item
 {
-     margin-bottom: 30px; 
+    margin-bottom: 16px;
 }
 
 .desciption-block__list
@@ -200,7 +200,8 @@ text-align: right;
 
 .about__title-mini
 {
-  font-weight: 600;  
+  font-weight: 600; 
+  color:rgba($color_title,0.50);
 }
 
 
@@ -208,20 +209,27 @@ text-align: right;
 {
   font-weight: 700;  
   font-size:36px;
-  padding-top:30px;
-  padding-bottom:40px;
+  padding-top: $base-size;
+  padding-bottom: cals (2 * $base-size);
 }
 .about__text
 {
   font-weight: 600;
   margin-bottom: 95px;
   line-height: 30px;
+  color:rgba($color_title,0.50) ; 
+}
+
+.about__left 
+{
+     padding-right: 40px; 
 }
 
 .about__text-dop
 {
   line-height: 30px;
-  font-style: italic;     
+  font-style: italic;    
+  color:rgba($color_title,0.50); 
 
   &:before
   {
@@ -242,4 +250,5 @@ text-align: right;
   background: linear-gradient(0deg, $bg-site 50%, rgba(0, 0, 0, 0.65) 90%, rgba(0, 0, 0, 0) 100%);
 
 }
+
 
