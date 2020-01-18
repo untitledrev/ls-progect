@@ -86,6 +86,7 @@
           {'name': 'Jquery и Vue.js','prosent' : '55'}      
     ]
 
+- var review_text = "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"
 //-----------------------------------
 
 mixin icon(name, className)
@@ -155,6 +156,14 @@ mixin skills_1()
 
 
 mixin wors_privie(className,type)
+  if type == 2
+    .buttons__contener
+      .slider__buttons
+        .slider-button
+          button.slider-buttons__item.slider-buttons__item--slide--prev 
+            +icon('arrow-down', 'strekli_right__svg')        
+          button.slider-buttons__item.slider-buttons__item--slide--next
+            +icon('arrow-down', 'strekli_left__svg')
   ul(class=`${className}__list`)
 
     each item, index in wors
@@ -168,11 +177,24 @@ mixin wors_privie(className,type)
         +image(`content/${item.image}`, `${className}__pictere`)
         if type == 1
           span(class=`${className}__bg-number`) #{number}
-  
-    if type == 2
-      li.strekli__ypr__item
-        .strekli__ypr
-          .strekli_right.active
-            +icon('arrow-down', 'strekli_right__svg')        
-          .strekli_left
-            +icon('arrow-down', 'strekli_left__svg')
+
+
+mixin works__content()
+  .works__tags
+    each tags , index in wors
+      - var number = index + 1
+      if index == 0
+        - var active= 'active'
+      else
+        - var active= ''
+      div(class=`works__tag ${active}`)
+        ul.tags
+            each tag in tags.skill
+              li.tags__item #{tag}
+        .works__text
+          h3.works__title #{tags.name}
+          .works__desc-text
+            p #{tags.des}
+            a(class="iconed-link" href=`${tags.url}` target="_blank")
+              .iconed-link__icon
+              .iconed-link__text Посмотреть сайт
