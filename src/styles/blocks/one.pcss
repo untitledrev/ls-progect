@@ -36,10 +36,10 @@ color: $color_title;
 }
 .nav__item
 {
-     padding-left: 30px;
+    padding-left: 30px;
     padding-right: 30px; 
-         padding-top: 16px; 
-              padding-bottom: 16px; 
+    padding-top: 16px; 
+    padding-bottom: 16px; 
 }
 
 .nav
@@ -65,21 +65,27 @@ padding-top: 16px;
 }
 
 
-.one-block
+
+.one-block , .about
 {
-  position: relative;
   height: 100vh; 
   display: flex;
+  min-height: 650px;
+  max-height:1100px    
+}
+
+.one-block 
+{
+  position: relative;
   flex-direction:column;
   justify-content:space-between; 
 }
 .about
 {
-  height: 100vh;  
-  display: flex;
+
   align-items: center;
   justify-content: center;
-  min-height:450px;
+
 }
 .nav__link
 {
@@ -152,7 +158,7 @@ padding-top: 16px;
 
 .scroll
 {
-     padding-bottom: 10vh; 
+    margin-bottom: 10vh;
 }
 
 .about__container 
@@ -247,8 +253,28 @@ text-align: right;
 
 .about
 {
-  background: linear-gradient(0deg, $bg-site 50%, rgba(0, 0, 0, 0.65) 90%, rgba(0, 0, 0, 0) 100%);
+  
+  background: linear-gradient(0deg, #1d1f23  50%, rgba(0, 0, 0, 0.65) 90%, rgba(0, 0, 0, 0) 100%);
+ 
+
+    &:after
+    {
+      content: " ";
+      background-image: url('../images/content/about-bg.jpg');
+      background-position: center bottom;
+      background-repeat: repeat-x;
+      width: 100%;
+      height: 248px;
+      position: absolute;
+        bottom: 0px;  
+    }
+
+ 
 
 }
-
+  .about__container
+    {
+    position: relative;
+    z-index: 1;
+    }
 

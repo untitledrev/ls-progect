@@ -61,9 +61,29 @@
 }
 .skills__block
 {
-  margin-left: 125px;
-  margin-top:125px;
+  padding-left: 125px;
+  padding-top:125px;
 }
+
+.skills__block__contener:nth-child(1)
+{
+      margin-top: 0px; 
+}
+
+.skills__block__contener
+{
+    margin-top: 55px; 
+    &:nth-child(1)
+    {
+         margin-top: 0px;  
+    }
+    &:last-child 
+    {
+     padding-bottom: 120px;
+    }
+}
+
+
 
 .skills__block__title
 {
@@ -83,54 +103,47 @@
     stroke-dashoffset: 0;
   }
 }
-.progress {
+.skills__list {
   position: relative;
   display: inline-block;
   padding: 0;
-  text-align: center;
+  text-align: left;
+      margin-left: -40px;
 }
-.progress > li {
+.skills__item {
   display: inline-block;
   position: relative;
   text-align: center;
-  color: #93A2AC;
-  font-family: Lato;
+  color: rgba(#fff,0.5);
   font-weight: 100;
-  margin: 2rem;
+  margin-left: 22px;
+
 }
-.progress > li:before {
-  content: attr(data-name);
-  position: absolute;
-  width: 100%;
-  bottom: -2rem;
-  font-weight: 400;
+
+.skills__item__title:after {
+ content: attr(data-name_skill);
+    position: absolute;
+    width: 100%;
+    top: 83px;
+    left: 0;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
 }
-.progress > li:after {
-  content: attr(data-percent);
-  position: absolute;
-  width: 100%;
-  top: 3.7rem;
-  left: 0;
-  font-size: 2rem;
-  text-align: center;
+
+.skills__item__title svg
+{
+    width: 190px;
 }
-.progress svg {
-  width: 10rem;
-  height: 10rem;
+.skills__item__title  circle:nth-child(2)
+{
+stroke: #d47e1d;
+stroke-dashoffset:50;
+  stroke-width: 2px;
 }
-.progress svg:nth-child(2) {
-  position: absolute;
-  left: 0;
-  top: 0;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-}
-.progress svg:nth-child(2) path {
-  fill: none;
-  stroke-width: 25;
-  stroke-dasharray: 629;
-  stroke: #fff;
-  opacity: .9;
-  -webkit-animation: load 10s;
-          animation: load 10s;
+
+.skills__item__title  circle:nth-child(1)
+{
+  stroke: rgba(#fff,0.1);
+stroke-width: 0.8px;
 }

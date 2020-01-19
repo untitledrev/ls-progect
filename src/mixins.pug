@@ -80,13 +80,40 @@
 - var skills_title = 'Front-end'
 -
   var skills = [
-          {'name': 'HTML5','prosent' : '10'},
-          {'name': 'CSS3','prosent' : '15'},
-          {'name': 'Javascript','prosent' : '25'},      
-          {'name': 'Jquery и Vue.js','prosent' : '55'}      
+          {'name': 'HTML5','prosent' : '10 90'},
+          {'name': 'CSS3','prosent' : '85 15'},
+          {'name': 'Javascript','prosent' : '75 25'},      
+          {'name': 'Jquery','prosent' : '45 55'}      
     ]
 
-- var review_text = "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"
+
+- var skills_title2 = 'Workflow'
+-
+  var skills2 = [
+          {'name': 'GIT','prosent' : '10 90'},
+          {'name': 'Terminal','prosent' : '85 15'},
+          {'name': 'Gulp','prosent' : '75 25'},      
+          {'name': 'Webpack','prosent' : '45 55'}      
+    ]
+
+
+- 
+  var reviews = {
+
+        "title" : "Что обо мне говорят",
+        "user__name" : "Ковальчук Дмитрий",
+        "user_work" : "Основатель Loftschool",
+        "review_text" : "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"
+
+        }
+- 
+  var contact = {
+  
+        "title" : "Связаться со мной",
+        "user__name" : "Ковальчук Дмитрий",
+        "input" : ["Введите ваше имя" , "Введите ваш email" , "Сообщение к письму"],
+        "button" : "Отправить"
+  }
 //-----------------------------------
 
 mixin icon(name, className)
@@ -147,13 +174,22 @@ mixin desciption(className)
         span(class=`${className}__desciption`) #{item.desciption}
 
 mixin skills_1()
-  .skills__block__title #{skills_title}
-  ul.skills__list.progress
-    each item in skills
-      li(class=`skills__item`)
-        span(class=`skills__item__title` data-name=`${item.prosent}%` data-percent=`${item.name}`)
-        span.skills__item__svg-contener #{item.name}
+  .skills__block__contener
+    .skills__block__title #{skills_title}
+    ul.skills__list
+      each item in skills
+        li(class=`skills__item`)
+          span(class=`skills__item__title` data-name=`${item.prosent}%` data-name_skill=`${item.name}`)
+            +svg_skill(`${item.prosent}`)
 
+mixin skills_2()
+  .skills__block__contener
+    .skills__block__title #{skills_title2}
+    ul.skills__list
+      each item in skills2
+        li(class=`skills__item`)
+          span(class=`skills__item__title` data-name=`${item.prosent}%` data-name_skill=`${item.name}`)
+            +svg_skill(`${item.prosent}`)
 
 mixin wors_privie(className,type)
   if type == 2
@@ -198,3 +234,8 @@ mixin works__content()
             a(class="iconed-link" href=`${tags.url}` target="_blank")
               .iconed-link__icon
               .iconed-link__text Посмотреть сайт
+
+
+mixin svg_skill(dasharray)
+  - var svg_block  =  '<svg  viewBox="0 0 42 42" class="donut"><circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" ></circle><circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke-dasharray="' +  dasharray  +  '"  stroke-dashoffset="50"></circle></svg>'
+  span.svg_skill  !{svg_block}
