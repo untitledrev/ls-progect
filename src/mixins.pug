@@ -90,10 +90,10 @@
 - var skills_title2 = 'Workflow'
 -
   var skills2 = [
-          {'name': 'GIT','prosent' : '10 90'},
-          {'name': 'Terminal','prosent' : '85 15'},
-          {'name': 'Gulp','prosent' : '75 25'},      
-          {'name': 'Webpack','prosent' : '45 55'}      
+          {'name': 'GIT','prosent' : '20 80'},
+          {'name': 'Terminal','prosent' : '55 40'},
+          {'name': 'Gulp','prosent' : '50 50'},      
+          {'name': 'Webpack','prosent' : '25 75'}      
     ]
 
 
@@ -196,7 +196,7 @@ mixin wors_privie(className,type)
     .buttons__contener
       .slider__buttons
         .slider-button
-          button.slider-buttons__item.slider-buttons__item--slide--prev 
+          button.slider-buttons__item.slider-buttons__item--slide--prev.active
             +icon('arrow-down', 'strekli_right__svg')        
           button.slider-buttons__item.slider-buttons__item--slide--next
             +icon('arrow-down', 'strekli_left__svg')
@@ -232,7 +232,8 @@ mixin works__content()
           .works__desc-text
             p #{tags.des}
             a(class="iconed-link" href=`${tags.url}` target="_blank")
-              .iconed-link__icon
+              .iconed-link__icon 
+                +icon('link','link__icon__svg')
               .iconed-link__text Посмотреть сайт
 
 
