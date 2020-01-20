@@ -126,20 +126,20 @@ html(lang="ru")
       
       
       footer#footer.footer
-          .container.row
-            .footer__left.col-lg-4
-              .footer__left__date 2020
-              .footer__left__about
+          .container.footer__container
+         
+            .footer__left__date © 2020
+            .footer__left__about
                 .left__about__block
                   +title_footer('__size_m')
                        
               
-            .footer__right.col-lg-8
+            .footer__right.lg-8
               +nav('nav')
               .footer__content
                 .footer__text_dop__block
                   .footer__text_dop 
-                    p !{about.text_dop}
+                    p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
                   .footer__text_icon
                     +sohibal('sohibal',['instagram','vkontakte','github'],'footer-block__element')  
                 .footer__text
