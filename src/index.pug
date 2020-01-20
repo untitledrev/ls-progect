@@ -72,45 +72,57 @@ html(lang="ru")
           section#reviews.reviews
             .container
               .reviews__title__container
-                h2.section-title.reviews__contact__title--text #{reviews.title}
+                h2.section-title.reviews__contact__title--text.lg-4 #{reviews_title}
                 .button__container
-                  button.reviews-buttons__item.reviews-buttons__item--review--prev
-                    +icon('arrow-down', 'reviews-button__svg')
-                  button.reviews-buttons__item.reviews-buttons__item--review--next
-                    +icon('arrow-down', 'reviews-button__svg')
-              .reviews-sliders
-                .reviews-slider
-                  .reviews-slider__icon-contener
-                    span.reviews-slider__icon
-                  .reviews-slider__text-contener
-                    .reviews-slider__text
-                    .reviews-slider__people #{reviews.review_text}
-                      .avatar.user__avatar
-                        +image("content/photo__my.jpg", "avatar__pic")
-                      .user__container
-                        .user__name #{reviews.user__name}
-                        .user_work #{reviews.user_work}
+                  button.slider-buttons__item.reviews-buttons__item.reviews-buttons__item--review--prev
+                    +icon('arrow-down', 'strekli_left__svg')
+                  button.slider-buttons__item.reviews-buttons__item.reviews-buttons__item--review--next.active
+                    +icon('arrow-down', 'strekli_right__svg')
+              .reviews-sliders.lg-8
+                each review in reviews
+                  .reviews-slider
+                    .reviews-slider__icon-contener
+                      span.reviews-slider__icon
+                        +icon('quote','reviews-slider__icon__svg')
+                    .reviews-slider__text-contener
+                      .reviews-slider__text
+                        .reviews-slider__people #{review.review_text}
+                        .people-info__contener
+                          .avatar.user__avatar
+                            +image(`content/${review.avatar}`, "avatar__pic")
+                          .user__container
+                            .user__name #{review.user__name}
+                            .user_work #{review.user_work}
+                        
           
           section#contact.contact
             .container
               .contact__title__container
-                h2.section-title.contact__contact__title--text  #{reviews.user__name}
-              .form-container
+                h2.section-title.contact__contact__title--text  #{contact_title}
+              .form-container.lg-7
                 .form
-                  .form__item
-                    .form__item__icon
-                    .form__item__title Введите ваше имя
-                    input.form__item_input
-                  .form__item
-                    .form__item__icon
-                      .form__item__title Введите ваш email
-                      input.form__item_input    
-                  .form__item.form__item__textarea
-                    .form__item__icon
-                      .form__item__title Сообщение к письму
-                      textarea.form__item_input.form__item__textarea
+                  each contact in contacts
+                    if contact.svg != 'chat'
+                      .form__item
+                        
+                          .form__item__icon 
+                            .form__item__icon__container
+                              +icon(`${contact.svg}`,'form__item__icon_avator')      
+                          .form__item__container
+                            label.form__item__title #{contact.label}
+                            input(class="form__item_input" placeholder=`${contact.placeholder}` )
+                    if contact.svg == 'chat'
+                      .form__item.form__item__textarea--width
+                        
+                          .form__item__icon 
+                            .form__item__icon__container
+                              +icon(`${contact.svg}`,'form__item__icon_avator')      
+                          .form__item__container
+                            label.form__item__title #{contact.label}
+                            textarea(class="form__item_input.form__item__textarea" placeholder=`${contact.placeholder}`)                
+
                   .form__button__container
-                    button.form__button #{reviews.button}
+                    button.form__button #{contact_button}
       
       
       footer#footer.footer

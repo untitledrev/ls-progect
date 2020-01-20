@@ -96,24 +96,55 @@
           {'name': 'Webpack','prosent' : '25 75'}      
     ]
 
+- var reviews_title = "Что обо мне говорят"
 
 - 
-  var reviews = {
+  var reviews = [
 
-        "title" : "Что обо мне говорят",
+        {
+        "avatar" : "diva-avatar.jpg",
         "user__name" : "Ковальчук Дмитрий",
         "user_work" : "Основатель Loftschool",
         "review_text" : "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"
+        },
 
-        }
+        {
+        "avatar" : "vlad-avatar.jpg",
+        "user__name" : "Владимир Сабанцев",
+        "user_work" : "Преподаватель",
+        "review_text" : "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"
+        }        
+        ]
+
+     
 - 
-  var contact = {
-  
-        "title" : "Связаться со мной",
-        "user__name" : "Ковальчук Дмитрий",
-        "input" : ["Введите ваше имя" , "Введите ваш email" , "Сообщение к письму"],
-        "button" : "Отправить"
-  }
+  var contacts = [
+         
+      {
+        "label" : "Ковальчук Дмитрий",
+        "placeholder" : "Введите ваше имя",
+        "svg" : "avatar"
+      },
+      
+      {
+        "label" : "Введите ваш email",
+        "placeholder" : "loftschool@study.com",
+        "svg" : "envelope"
+      },
+
+      {
+        "label" : "Сообщение к письму",
+        "placeholder" : "Требуется ваша помощь в создании сайта.Интересуют сроки и цена вопроса",
+        "svg" : "chat"
+      }        
+        
+
+  ]
+
+
+- var contact_title = "Связаться со мной"
+- var contact_button = "Отправить"
+
 //-----------------------------------
 
 mixin icon(name, className)
@@ -240,3 +271,8 @@ mixin works__content()
 mixin svg_skill(dasharray)
   - var svg_block  =  '<svg  viewBox="0 0 42 42" class="donut"><circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" ></circle><circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke-dasharray="' +  dasharray  +  '"  stroke-dashoffset="50"></circle></svg>'
   span.svg_skill  !{svg_block}
+
+
+
+
+  

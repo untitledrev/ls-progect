@@ -15,6 +15,7 @@ module.exports = {
         fs.readFileSync("./src/styles/variables.json", "utf-8")
       )
     }),
+    require('postcss-math'),    
     require("postcss-nested"),
     require("postcss-rgb"),
     require("postcss-inline-svg")({
