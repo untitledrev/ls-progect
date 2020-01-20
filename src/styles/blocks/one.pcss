@@ -60,12 +60,26 @@ color: $color_title;
 {
       width: 25PX;
       fill: $sohibal_color;
+
+&:hover
+{    fill: $base-hover-color}
+
 }
 .sohibal__item
 {
       display: inline-block;
      margin-left: 40px; 
+
+
 }
+
+
+.footer__text_icon .sohibal__list .sohibal__item:hover
+{
+    border-color: $base-hover-color;
+}
+
+
 .sohibal__list
 {
 text-align: right;
@@ -100,6 +114,11 @@ padding-top: 16px;
 {
 
          display: block;
+
+   &:hover
+   {
+    color:#d47f1e; 
+   }      
 }
 
 
@@ -157,12 +176,27 @@ padding-top: 16px;
     margin: 0 auto;
     align-items: center;
     justify-content: center;   
+
+    &:hover
+    {
+  color: #d47f1e;
+
+   & .scroll__icon
+    {
+    fill: #d47f1e;
+    }
+
+    }
+
+
 }
 
 .scroll__text
 {
      font-weight: bold;
     font-size: 18px; 
+
+ 
 }
 
 .scroll

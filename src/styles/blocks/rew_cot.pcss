@@ -173,7 +173,28 @@ position: relative;
 .form__item
 {
      width: 50%; 
+&:focus-within 
+{
+
+    border-color: #ff9a00;
+
+& .form__item__icon_avator
+{
+    fill: #ff9a00;
+    opacity: 1;
+
 }
+
+}
+
+
+
+._input
+{}
+
+}
+
+
 
 .form__item__textarea
 {
@@ -277,7 +298,7 @@ position: relative;
 {
      font-size: 18px;
     font-weight: bold;
-    background: #d47f1e;
+    background: linear-gradient(to right, #d0731b, #dc9322, #d0731b);
     color: #fff;
     text-transform: uppercase;
     padding-top: 29px;
@@ -285,4 +306,8 @@ position: relative;
     padding-left: 115px;
     padding-right: 115px;
     margin-top: 60px; 
+    &:hover
+    {
+        background: linear-gradient(to right, #ff8900, #ff9900, #ff8900);  
+    }
 }

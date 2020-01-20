@@ -12,5 +12,6 @@
   "star__color":"#db0200",
   "bg-site":"#212426",
   "bg-skill":"#ffffff" ,
-  "base-size":"16px"
+  "base-size":"16px",
+  "base-hover-color":"#ff9a00"
 }
