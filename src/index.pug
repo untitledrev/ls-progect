@@ -16,11 +16,11 @@ html(lang="ru")
           header.header
             .container
               .top-block.row
-                .logo.top-block__element.col-lg-2
+                .logo.top-block__element.lg-2
                   .logo__link ИИ
-                .menu.top-block__element.col-lg-8
+                .menu.top-block__element.lg-8
                   +nav('nav')            
-                +sohibal('sohibal',['instagram','vkontakte','github'],'top-block__element col-lg-2')
+                +sohibal('sohibal',['instagram','vkontakte','github'],'top-block__element lg-2')
           .title-site
             +title('')
           .scroll
@@ -30,14 +30,14 @@ html(lang="ru")
                 +icon('scroll', 'scroll__icon')
         section#about.about
           .container.row
-            .about__container.col-lg-8
+            .about__container.lg-8
               .about__block.row
-                .about__left.col-lg-4
+                .about__left.lg-4
                   .about__image
                     +image('content/photo__my.jpg', 'photo__my')
                   .about__desciption
                     +desciption('desciption-block')
-                .about__right.col-lg-8
+                .about__right.lg-8
                   .about__title-mini #{about.hellow}
                   h2.about__title #{about.name} #{about.fistname}
                   .about__text 
@@ -60,10 +60,10 @@ html(lang="ru")
           .container
             .work__title #{work_title}
             .work__content.row
-              .work__privie-image-block.col-lg-8
+              .work__privie-image-block.lg-8
                 +wors_privie('work__image',1) 
                 +wors_privie('work__image__menu',2)
-              .works__right.col-lg-4
+              .works__right.lg-4
                 .work__number-bg__contener
                   .work__number-bg 1
                 +works__content
