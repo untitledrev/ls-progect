@@ -1,0 +1,72 @@
+$grid-w-d-hd : resolve(resolve($container-desktop-hd  - resolve($grid-p-desktop*11) ) / 12 );
+$grid-w-d : resolve(resolve($container-desktop - resolve($grid-p-desktop*11) ) / 12 );
+
+
+
+.row
+{
+  display:grid; 
+  grid-template-columns: repeat(12 , resolve(resolve(1/12) * 100)% );
+}
+
+
+
+.one-block
+{
+  display:grid;
+
+  grid-template:
+"header"  100px
+"title-site"  1fr
+"scroll"  150px
+  / 100% 100% 100%
+
+}
+
+.header
+{
+grid-area:header;
+}
+.title-site
+{
+grid-area:title-site;
+}
+
+.scroll
+{
+  grid-area:scroll;
+}
+
+.title-site__container
+{
+display:grid;
+grid-template-columns: repeat(6 , $grid-w-d-hd);
+grid-gap: $grid-p-desktop-hd;
+
+}
+.title-site__left
+{
+  grid-column: 1 / 3;
+}
+
+.title-site__right
+{
+    grid-column: 3 / 6;
+}
+
+.logo 
+{
+   grid-column: 1 / 3;
+}
+.menu 
+{
+    grid-column: 3/11; 
+}
+.sohibal 
+{
+      grid-column: 11/13; 
+}
+.top-block
+{
+  align-items : center;
+}

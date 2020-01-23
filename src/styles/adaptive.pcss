@@ -1,71 +1,102 @@
-.lg-
+
+
+@include desktop {
+
+.title-site__container
 {
-    &1
-    {
-    max-width: resolve( (100 / 12) * 1)%;
-    flex: 0 0 resolve( (100 / 12) * 1);
-    }
+    grid-template-columns: repeat(6 , $grid-w-d);
+    grid-gap: $grid-p-desktop;
+}
 
-    &2
-    {
-    max-width: resolve( (100 / 12) * 2)%;
-     flex: 0 0 resolve( (100 / 12) * 2)%;   
-    }
+.logo 
+{
+    grid-column: 1 / 2;  
+}
+.menu 
+{
+       grid-column: 2/11;  
+}
+}
 
-    &3
+@include tabletsBig {
+    .nav__item
     {
-    max-width: resolve( (100 / 12) * 3)%;
-    flex: 0 0 resolve( (100 / 12) * 3)%;    
-    }   
-
-    &4
-    {
-    max-width: resolve( (100 / 12) * 4)%;
-    flex: 0 0 resolve( (100 / 12) * 4)%;    
+     padding: 1rem 1rem;   
     }
-
-    &5
+    .sohibal__item
     {
-    max-width: resolve( (100 / 12) * 5)%;
-    flex: 0 0 resolve( (100 / 12) * 5)%;    
-    }    
-
-    &6
-    {
-    max-width: resolve( (100 / 12) * 6)%;
-    flex: 0 0 resolve( (100 / 12) * 7)%;    
+     margin-left: 10px;   
     }
+}
 
-    &7
-    {
-    max-width: resolve( (100 / 12) * 7)%;
-    flex: 0 0 resolve( (100 / 12) * 1)%;   
-    }
+@include tablets {
+.container 
+{
+ width: 90%;   
+}
+.row
+{
+  display:grid; 
+  grid-template-columns: repeat(6 , resolve(resolve(1/6) * 100)% );
+}
 
-    &8
-    {
-    max-width: resolve( (100 / 12) * 8)%;
-    flex: 0 0 resolve( (100 / 12) * 8)%;    
-    }
 
-    &9
-    {
-    max-width: resolve( (100 / 12) * 9)%;
-    flex: 0 0 resolve( (100 / 12) * 9)%;    
-    }
-    &10
-    {
-    max-width: resolve( (100 / 12) * 10)%;
-    flex: 0 0 resolve( (100 / 12) * 10)%;    
-    }
-    &11
-    {
-    max-width: resolve( (100 / 12) * 11)%;
-    flex: 0 0 resolve( (100 / 12) * 11)%;    
-    }   
-    &12
-    {
-    max-width: resolve( (100 / 12) * 12)%;
-    flex: 0 0 resolve( (100 / 12) * 12)%;    
-    }        
+.block__mobile
+{
+   display:block;
+}
+.block__desktop
+{
+   display:none;
+}
+
+
+.menu 
+{
+        grid-column: 6/6;     
+}
+.sohibal 
+{
+        grid-column: 2/6;     
+          grid-row: 1 / 1;
+&__item
+{
+    margin-left: 40px;     
+}
+
+
+}
+
+.title-site__container
+{
+  display: block;  
+}
+
+.title-site__left
+{
+    text-align: center;
+}
+.title-site__right
+{
+    text-align: center;
+    margin: 0px;
+    margin-top: 30px;
+       font-size: 48px; 
+}
+
+.one-block
+{
+    
+  grid-template:
+"header"  100px
+"title-site"  1fr
+
+  / 100% 100% 
+}
+
+.one-block
+{
+ 
+}
+
 }
