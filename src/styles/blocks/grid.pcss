@@ -6,7 +6,7 @@ $grid-w-d : resolve(resolve($container-desktop - resolve($grid-p-desktop*11) ) /
 .row
 {
   display:grid; 
-  grid-template-columns: repeat(12 , resolve(resolve(1/12) * 100)% );
+  grid-template-columns: repeat(12 , 1fr);
 }
 
 
@@ -69,4 +69,28 @@ grid-gap: $grid-p-desktop-hd;
 .top-block
 {
   align-items : center;
+}
+
+.about__block
+{
+  grid-template-columns: repeat(8 , 1fr);
+  display: grid; 
+grid-gap: $grid-p-desktop-hd;  
+}
+
+
+
+.about__left
+{
+     grid-column: 1/4; 
+}
+
+.about__right
+{
+     grid-column:4/9; 
+}
+
+.skills__container
+{
+  
 }

@@ -1,5 +1,7 @@
-.header
+.welcome
 {
+     background-position: top center;
+    background-repeat: no-repeat; 
 }
 .welcome , .about , .skills
 {
@@ -118,6 +120,7 @@ text-align: right;
   align-items: center;
   justify-content: center;
 
+display: flex;
 }
 .nav__link
 {
@@ -225,6 +228,7 @@ text-align: right;
 .about__container 
 {
      margin: 0 auto; 
+    max-width: 980px;
 }
 .photo__my
 {
@@ -239,7 +243,7 @@ border-radius: 50%;
 }
 .about__right 
 {
-    padding-left: 115px;
+     padding-left: 55px;  
 }
 
 .desciption-block__name
@@ -277,7 +281,7 @@ text-align: right;
   font-weight: 700;  
   font-size:36px;
   padding-top: $base-size;
-  padding-bottom: $base-size * 2;
+  /* padding-bottom: resolve($base-size * 2); */
 }
 .about__text
 {
@@ -290,7 +294,7 @@ text-align: right;
 
 .about__left 
 {
-     padding-right: 40px; 
+       padding-right: 50px;
 }
 
 .about__text-dop

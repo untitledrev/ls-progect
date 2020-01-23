@@ -35,15 +35,15 @@ html(lang="ru")
               .scroll__icon
                 +icon('scroll', 'scroll__icon')
         section#about.about
-          .container.row
-            .about__container.lg-8
-              .about__block.row
-                .about__left.lg-4
+          .container
+            .about__container
+              .about__block
+                .about__left
                   .about__image
                     +image('content/photo__my.jpg', 'photo__my')
                   .about__desciption
                     +desciption('desciption-block')
-                .about__right.lg-8
+                .about__right
                   .about__title-mini #{about.hellow}
                   h2.about__title #{about.name} #{about.fistname}
                   .about__text 
