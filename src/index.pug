@@ -11,7 +11,14 @@ html(lang="ru")
     .wrapper
       .welcome#welcome    
         .parallax
-          +image('content/phone_dev-min.jpg', 'top_fone_1')     
+          .parallax__header.parallax__layer(data-speed="0.01")
+            +image('content/paralax_header-min.jpg', 'parallax__header__img parallax__img')     
+          .parallax__paralax_holm.parallax__layer(data-speed="0.2")
+            +image('content/paralax_holm-min.png', 'paralax_holm__img parallax__img')             
+          .parallax__paralax_most.parallax__layer(data-speed="0.3")
+            +image('content/paralax_most-min.png', 'paralax_most__img parallax__img')   
+          .parallax__paralax_footer.parallax__layer(data-speed="0.4")
+            +image('content/paralax_footer-min.png', 'paralax_footer__img parallax__img')         
         section.one-block
           header.header
             .container
