@@ -40,7 +40,8 @@ position: relative;
 .reviews-sliders
 {
     margin-top: 96px;
-         display: flex; 
+         max-width: 980px;    display: flex; 
+
 }
 
 
@@ -137,10 +138,6 @@ position: relative;
      
 }
 
-.reviews__title__container
-{
- display: flex; 
-}
 
 .reviews-buttons__item.slider-buttons__item
 {
@@ -172,7 +169,12 @@ position: relative;
 
 .form__item
 {
-     width: 50%; 
+    
+  &-one__container
+  {
+      width: 50%; 
+  }
+
 &:focus-within 
 {
 
@@ -325,4 +327,10 @@ position: relative;
 .form__item__textarea--width .form__item__icon
 {
      padding-bottom: 40px;
+}
+
+.reviews
+{
+
+    position: relative;  
 }

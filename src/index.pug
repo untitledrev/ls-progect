@@ -66,18 +66,19 @@ html(lang="ru")
           .container
             .work__title #{work_title}
             .work__content.row
-              .work__privie-image-block.lg-8
-                +wors_privie('work__image',1) 
-                +wors_privie('work__image__menu',2)
-              .works__right.lg-4
-                .work__number-bg__contener
-                  .work__number-bg 1
+              .work__privie-image-block
+                .work__privie-image__container
+                  +wors_privie('work__image',1) 
+                  +wors_privie('work__image__menu',2)
+              .work__number-bg__contener
+                .work__number-bg 1
+              .works__right
                 +works__content
       .reviews__contact
         .reviews__contact-bg2__container
           section#reviews.reviews
             .container
-              .reviews__title__container
+              .reviews__title__container.row
                 h2.section-title.reviews__contact__title--text.lg-4 #{reviews_title}
                 .button__container
                   button.slider-buttons__item.reviews-buttons__item.reviews-buttons__item--review--prev
@@ -105,18 +106,18 @@ html(lang="ru")
             .container
               .contact__title__container
                 h2.section-title.contact__contact__title--text  #{contact_title}
-              .form-container.lg-7
+              .form-container.row
                 .form
                   each contact in contacts
                     if contact.svg != 'chat'
-                      .form__item
-                        
-                          .form__item__icon 
-                            .form__item__icon__container
-                              +icon(`${contact.svg}`,'form__item__icon_avator')      
-                          .form__item__container
-                            label.form__item__title #{contact.label}
-                            input(class="form__item_input" placeholder=`${contact.placeholder}` )
+                      .form__item-one__container
+                        .form__item                        
+                              .form__item__icon 
+                                .form__item__icon__container
+                                  +icon(`${contact.svg}`,'form__item__icon_avator')      
+                              .form__item__container
+                                label.form__item__title #{contact.label}
+                                input(class="form__item_input" placeholder=`${contact.placeholder}` )
                     if contact.svg == 'chat'
                       .form__item.form__item__textarea--width
                         
@@ -131,15 +132,15 @@ html(lang="ru")
       
       
       footer#footer.footer
-          .container.footer__container
-         
-            .footer__left__date © 2020
-            .footer__left__about
-                .left__about__block
-                  +title_footer('__size_m')
+          .container.footer__container.row
+            .footer__left
+              .footer__left__date © 2020
+              .footer__left__about
+                  .left__about__block
+                    +title_footer('__size_m')
                        
               
-            .footer__right.lg-8
+            .footer__right
               +nav('nav')
               .footer__content
                 .footer__text_dop__block

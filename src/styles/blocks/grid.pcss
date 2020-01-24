@@ -7,6 +7,7 @@ $grid-w-d : resolve(resolve($container-desktop - resolve($grid-p-desktop*11) ) /
 {
   display:grid; 
   grid-template-columns: repeat(12 , 1fr);
+ grid-gap: $grid-p-desktop-hd; 
 }
 
 
@@ -41,7 +42,7 @@ grid-area:title-site;
 {
 display:grid;
 grid-template-columns: repeat(6 , $grid-w-d-hd);
-grid-gap: $grid-p-desktop-hd;
+
 
 }
 .title-site__left
@@ -92,5 +93,46 @@ grid-gap: $grid-p-desktop-hd;
 
 .skills__container
 {
-  
+ grid-column:4/13; 
+}
+
+.work__privie-image-block
+{
+     grid-column: 1/9; 
+}
+.works__right 
+{
+       grid-column: 10/13; 
+}
+
+.work__number-bg__contener
+{
+ grid-column: 9/10; 
+}
+
+
+.reviews__contact__title--text
+{
+    grid-column: 1/5; 
+}
+.button__container
+{
+   grid-column: 5/7; 
+}
+
+.form
+{
+     grid-column: 1/8; 
+}
+
+.footer__left
+{
+    grid-column: 1/5; 
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: $grid-p-desktop-hd;   
+}
+.footer__right
+{
+   grid-column: 5/13;  
 }
