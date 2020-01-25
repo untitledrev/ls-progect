@@ -1,0 +1,63 @@
+script(type='text/x-template')#work-contener
+  .work-contener
+    display(
+      :works="works",
+      :currentWork="currentWork",
+      :currentIndex="currentIndex"
+      @slide="handleSlide"
+    )
+
+script(type='text/x-template')#work-display
+  .work__content.row
+    .work__privie-image-block
+      .work__privie-image__container
+        ul(class=`work__image__list`)
+          li(class=`work__image__item active`)
+            img(:src="currentWork.photo" class="work__image__pictere")
+        btns(
+          @slide="direction => $emit('slide', direction)"
+        )
+        thumbs( :works="works"
+        :currentWork="currentWork"
+         )       
+    .work__number-bg__contener
+      .work__number-bg {{currentIndex + 1}}
+    .works__right
+      info(:currentWork="currentWork")
+
+script(type='text/x-template')#work-thumbs
+  ul(class=`work__image__menu__list`)
+      li(class=`work__image__menu__item`
+           v-for="work in works"
+           :class="{active: work.id == currentWork.id}"
+      )
+        a.work__image__menu__item__thumbs-link
+          img(:src="work.photo" class="work__image__menu__pictere")
+
+script(type='text/x-template')#work-btns  
+  .buttons__contener
+    .slider__buttons
+      .slider-button
+        button(@click.prevent="$emit('slide', 'next')").slider-buttons__item.slider-buttons__item--slide--prev.active
+          +icon('arrow-down', 'strekli_right__svg')        
+        button(@click.prevent="$emit('slide', 'prev')").slider-buttons__item.slider-buttons__item--slide--next
+          +icon('arrow-down', 'strekli_left__svg')  
+script(type='text/x-template')#work-info   
+  .works__tags
+    div(class=`works__tag active`)
+      tags(
+        :tags="tagsArray"
+      )
+      .works__text
+        h3.works__title {{currentWork.title}}
+        .works__desc-text
+          p {{currentWork.desc}}
+          a(class="iconed-link" :href="currentWork.link" target="_blank")
+            .iconed-link__icon 
+              +icon('link','link__icon__svg')
+            .iconed-link__text Посмотреть сайт   
+script(type='text/x-template')#work-tags
+  ul.tags
+    li.tags__item(v-for="tag in tags")
+      .tag {{tag}}
+        
