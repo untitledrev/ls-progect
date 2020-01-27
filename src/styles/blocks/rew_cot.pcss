@@ -1,336 +1,272 @@
-.reviews__contact
-{
-background-repeat: no-repeat;
-background-position: center center;  
-background-image: url('../images/content/bg__pre_footer.jpg'); 
+.reviews__contact {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("../images/content/bg__pre_footer.jpg");
 }
 
-.reviews__contact-bg2__container
-{
-position: relative; 
- padding-top: 150px;
- padding-bottom: 166px;
+.reviews__contact-bg2__container {
+  position: relative;
+  padding-top: 150px;
+  padding-bottom: 166px;
   max-width: $bp-desktop-hd;
   margin-top: 95px;
   margin: 0 auto;
 
-    &:before
-    {
-    content:'';  
-    background-image: url('../images/content/list.png');
-    background-position: left bottom  ;
+  &:before {
+    content: "";
+    background-image: url("../images/content/list.png");
+    background-position: left bottom;
     background-repeat: no-repeat;
     width: 533px;
     height: 1340px;
     right: 0px;
     position: absolute;
-    top: -130px;    
-    }
+    top: -130px;
+  }
 }
 
-
-.section-title
-{
- font-size: 36px;
- font-weight: bold; 
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
 }
 
-
-
-.reviews-sliders
-{
-    margin-top: 96px;
-         max-width: 980px;    display: flex; 
-
+.reviews-sliders {
+  margin-top: 96px;
+  max-width: 980px;
+ 
 }
 
-
-
-.reviews-slider
-{
+.reviews-slider {
   display: flex;
-  width: 50%;  
   max-width: 425px;
-  margin-right: 80px;  
+ 
 
-  &.reviews-slider:last-child
-  {
+  &.reviews-slider:last-child {
     margin-right: 0px;
   }
 
-  &__icon-contener
-  {
-    min-width: resolve( resolve(($container-desktop-hd / 12 * 1 )) - 30px);
+  &__icon-contener {
+    min-width: resolve(resolve(($container-desktop-hd / 12 * 1)) - 30px);
   }
-  &__people
-  {
-   font-size: 16px;
+  &__people {
+    font-size: 16px;
     line-height: 30px;
-    font-weight: 600; 
-    color:rgba(#fff,0.5)
+    font-weight: 600;
+    color: rgba(#fff, 0.5);
   }
-  &__icon__svg
-  {
+  &__icon__svg {
     fill: #fff;
-    opacity: .05;
+    opacity: 0.05;
     max-width: 75px;
     width: 100%;
     margin-right: 22px;
   }
 }
 
-.contact
-{
-    margin-top: 180px;
+.contact {
+  margin-top: 180px;
 }
-.user
-{
-  &__avatar.avatar 
-  {
-  width: 75px;
+.user {
+  &__avatar.avatar {
+    width: 75px;
   }
-  &__name
-  {}
+  &__name {
+  }
 }
 
-.people-info__contener
-{
-  display:flex;
-      align-items: center;
-    justify-content: center;
+.people-info__contener {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.user__container
-{
+.user__container {
   margin-left: 31px;
 }
-.user__name{
-      font-size: 18px;
-    font-weight: bold;
+.user__name {
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.people-info__contener
-{
-      margin-top: 30px;
+.people-info__contener {
+  margin-top: 30px;
 }
-.user_work
-{
-     font-size: 16px; 
-      margin-top: 16px;
-     color: rgba(#fff, 0.3)
+.user_work {
+  font-size: 16px;
+  margin-top: 16px;
+  color: rgba(#fff, 0.3);
 }
 
-.reviews-slider__text
-{
-    height: 100%;
-    display: flex;
-    align-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: column;  
+.reviews-slider__text {
+  height: 100%;
+  display: flex;
+  align-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
-.reviews-slider__people
-{
-     flex: 1; 
+.reviews-slider__people {
+  flex: 1;
 }
 
-.reviews__contact__title--text
-{
-       width: 100%;
-     
+.reviews__contact__title--text {
+  width: 100%;
 }
 
-
-.reviews-buttons__item.slider-buttons__item
-{
-    width: 51px; 
-    border: 1px solid #fff;
-    border-radius: 50%;    
+.reviews-buttons__item.slider-buttons__item {
+  width: 51px;
+  border: 1px solid #fff;
+  border-radius: 50%;
 }
 
-.button__container
-{
+.button__container {
   display: flex;
 }
 
-.reviews-buttons__item--review--prev
-{
- margin-right: 30px; 
+.reviews-buttons__item--review--prev {
+  margin-right: 30px;
 }
 
-.form-container
-{
- margin-top: 95px; 
+.form-container {
+  margin-top: 95px;
 }
-.form__item__icon_avator
-{
-    width: 26px;
-    fill: #fff;
-    opacity: 0.3;
+.form__item__icon_avator {
+  width: 26px;
+  fill: #fff;
+  opacity: 0.3;
 }
 
-.form__item
-{
-    
-  &-one__container
-  {
-      width: 50%; 
+.form__item {
+  &-one__container {
+    width: 50%;
   }
 
-&:focus-within 
-{
-
+  &:focus-within {
     border-color: #ff9a00;
 
-& .form__item__icon_avator
-{
-    fill: #ff9a00;
-    opacity: 1;
-
-}
-
-}
-
-
-
-._input
-{}
-
-}
-
-
-
-.form__item__textarea
-{
-       width: 100%; 
-}
-.form
-{
-     display: flex;
-    flex-flow: row wrap; 
-}
-
-.form__item__title
-{
- font-weight: 600;
-    font-size: 16px;
-  color:rgba(#fff,0.3);   
-    margin-bottom: 20px;
-}
-
-
-
-.form__item
-{
-    display: flex; 
-    max-width: 380px; 
-
-}
-.form__item__container
-{
-    display: flex;   
-       flex-direction: column; 
-     width: 100%;      
-}
-
-.form__item__icon
-{
-     width: 45px; 
-         display: flex;
-    align-items: flex-end;
-}
-
-.form__item_input
-{
-
-    border: none;
-    background: no-repeat; 
-        margin-bottom: 7px;  
-    color: #fff;
-    font-weight: bold;    
- 
-}
-.form__item__textarea
-{
-    color: #fff;
-    font-weight: bold;  
-    resize: none;
-    line-height: 36px;
-    height: 72px;
-    overflow: hidden; 
-}
-
- .form__item_input::placeholder 
- {
-    font-weight: bold;
-    color: #fff;
-    font-size: 18px;
-    font-style: normal;
-  
-     }
-
-
-    .form__item
-    {
-
-    border-bottom: 1px solid;   
-    padding-bottom: 7px;   
-    } 
-
-  .form__item__textarea--width.form__item 
-  {
-    width: 100%;
-      margin-top: 41px;  
-  }
-
- .form__item__textarea--width 
- {
-    width: 100%;
-    max-width: 100%;
-  }
-
-.form__item:nth-child(2)
-{
-     margin-left: auto; 
-}
-
-
-.form__item__textarea 
-{
-  background: none;
-    border: none;
-}
-
-.form__item__textarea 
-{
-    font-weight: bold;
-    color: #fff;
-    font-size: 18px;
-    font-style: normal;  
-}
-
-.form__button
-{
-     font-size: 18px;
-    font-weight: bold;
-    background: linear-gradient(to right, #d0731b, #dc9322, #d0731b);
-    color: #fff;
-    text-transform: uppercase;
-    padding-top: 29px;
-    padding-bottom: 29px;
-    padding-left: 115px;
-    padding-right: 115px;
-    margin-top: 60px; 
-    &:hover
-    {
-        background: linear-gradient(to right, #ff8900, #ff9900, #ff8900);  
+    & .form__item__icon_avator {
+      fill: #ff9a00;
+      opacity: 1;
     }
-}
-.form__item__textarea--width .form__item__icon
-{
-     padding-bottom: 40px;
+  }
+
+  ._input {
+  }
 }
 
-.reviews
-{
+.form__item__textarea {
+  width: 100%;
+}
+.form {
+  display: flex;
+  flex-flow: row wrap;
+}
 
-    position: relative;  
+.form__item__title {
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(#fff, 0.3);
+  margin-bottom: 20px;
+}
+
+.form__item {
+  display: flex;
+  max-width: 380px;
+}
+.form__item__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__item__icon {
+  width: 45px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.form__item_input {
+  border: none;
+  background: no-repeat;
+  margin-bottom: 7px;
+  color: #fff;
+  font-weight: bold;
+}
+.form__item__textarea {
+  color: #fff;
+  font-weight: bold;
+  resize: none;
+  line-height: 36px;
+  height: 72px;
+  overflow: hidden;
+}
+
+.form__item_input::placeholder {
+  font-weight: bold;
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+}
+
+.form__item {
+  border-bottom: 1px solid;
+  padding-bottom: 7px;
+}
+
+.form__item__textarea--width.form__item {
+  width: 100%;
+  margin-top: 41px;
+}
+
+.form__item__textarea--width {
+  width: 100%;
+  max-width: 100%;
+}
+
+.form__item:nth-child(2) {
+  margin-left: auto;
+}
+
+.form__item__textarea {
+  background: none;
+  border: none;
+}
+
+.form__item__textarea {
+  font-weight: bold;
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+}
+
+.form__button {
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(to right, #d0731b, #dc9322, #d0731b);
+  color: #fff;
+  text-transform: uppercase;
+  padding-top: 29px;
+  padding-bottom: 29px;
+  padding-left: 115px;
+  padding-right: 115px;
+  margin-top: 60px;
+  &:hover {
+    background: linear-gradient(to right, #ff8900, #ff9900, #ff8900);
+  }
+}
+.form__item__textarea--width .form__item__icon {
+  padding-bottom: 40px;
+}
+
+.reviews {
+  position: relative;
+}
+
+.review-contener {
+  
+}
+.VueCarousel-pagination {
+      display: none;
+}
+.reviews-slider
+{
+ height: 100%; 
 }

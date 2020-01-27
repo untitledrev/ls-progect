@@ -105,29 +105,8 @@ html(lang="ru")
       .reviews__contact
         .reviews__contact-bg2__container
           section#reviews.reviews
-            .container
-              .reviews__title__container.row
-                h2.section-title.reviews__contact__title--text.lg-4 #{reviews_title}
-                .button__container
-                  button.slider-buttons__item.reviews-buttons__item.reviews-buttons__item--review--prev
-                    +icon('arrow-down', 'strekli_left__svg')
-                  button.slider-buttons__item.reviews-buttons__item.reviews-buttons__item--review--next.active
-                    +icon('arrow-down', 'strekli_right__svg')
-              .reviews-sliders.lg-8
-                each review in reviews
-                  .reviews-slider
-                    .reviews-slider__icon-contener
-                      span.reviews-slider__icon
-                        +icon('quote','reviews-slider__icon__svg')
-                    .reviews-slider__text-contener
-                      .reviews-slider__text
-                        .reviews-slider__people #{review.review_text}
-                        .people-info__contener
-                          .avatar.user__avatar
-                            +image(`content/${review.avatar}`, "avatar__pic")
-                          .user__container
-                            .user__name #{review.user__name}
-                            .user_work #{review.user_work}
+              #reviews-component
+
                         
           
           section#contact.contact
