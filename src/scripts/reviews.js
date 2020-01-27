@@ -67,21 +67,25 @@ var  elem_prev = document.querySelector('.reviews-buttons__item--review--prev');
       if(elem_n.getAttribute("class").indexOf("VueCarousel-navigation--disabled") == 58)  
       {
       elem_next.classList.remove('active');
-      console.log('12');
+      elem_next.disabled=true;
+      // console.log('12');
       }
       else
       {
-        elem_next.classList.add('active');      
+        elem_next.classList.add('active'); 
+        elem_next.disabled=false;    
       }
 
       if(elem_p.getAttribute("class").indexOf("VueCarousel-navigation--disabled") == 58)  
       {
         elem_prev.classList.remove('active');
-      console.log('21');
+        elem_prev.disabled=true;
+        // console.log('21');
       }
       else
       {
-        elem_prev.classList.add('active');      
+        elem_prev.classList.add('active');
+        elem_prev.disabled=false;      
       }
     },
 

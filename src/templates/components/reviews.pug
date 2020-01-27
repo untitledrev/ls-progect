@@ -3,7 +3,7 @@ script(type='text/x-template')#review-contener
     .reviews__title__container.row
       h2.section-title.reviews__contact__title--text.lg-4 #{reviews_title}                
       .button__container
-        button(@click.prevent="handleSlide('prev')").qw.slider-buttons__item.reviews-buttons__item.reviews-buttons__item--review--prev
+        button(@click.prevent="handleSlide('prev')"   disabled).qw.slider-buttons__item.reviews-buttons__item.reviews-buttons__item--review--prev
           +icon('arrow-down', 'strekli_left__svg')
         button(@click.prevent="handleSlide('next')").qw.slider-buttons__item.reviews-buttons__item.reviews-buttons__item--review--next.active
           +icon('arrow-down', 'strekli_right__svg')

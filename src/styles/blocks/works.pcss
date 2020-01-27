@@ -237,8 +237,16 @@ color: rgba(#353e4f,0.7);
     fill: #586ed3;
 }
 
-.slider-buttons__item:hover
+.slider-buttons__item.active:hover
 {
 opacity:1;
 background-color: $base-hover-color;
+}
+
+button[disabled="disabled"] {
+    cursor: auto;
+}
+
+button[disabled] {
+    cursor: auto;
 }

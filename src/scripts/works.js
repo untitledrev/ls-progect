@@ -99,21 +99,38 @@ methods:  {
 
 
     handleSlide(direction) {
+
+     
+      var  elem_next = document.querySelector('.slider-buttons__item--slide--next');      
+      var  elem_prev = document.querySelector('.slider-buttons__item--slide--prev');
+                
       const worksAmount = this.works.length - 1;   
       switch (direction) {
-        case "next":
+          case "next":
           if (this.currentIndex < worksAmount) 
-          this.currentIndex++;
-         
-         
+          {
+
+            this.currentIndex++;
+
+          }         
           break;
-        case "prev":
+          case "prev":
           if (this.currentIndex > 0) 
+          {
           this.currentIndex--;
-        
-        
+          }        
           break;
       }
+
+      if (this.currentIndex < worksAmount) 
+      elem_prev.disabled=false;
+       else
+      elem_prev.disabled=true;  
+      if (this.currentIndex > 0) 
+      elem_next.disabled=false;
+       else
+       elem_next.disabled=true;  
+
     }
    
 
