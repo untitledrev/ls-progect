@@ -1,6 +1,8 @@
 import Vue from 'vue';
-import VueCarousel from 'vue-carousel';
-Vue.use(VueCarousel);
+import { Carousel, Slide } from 'vue-carousel';
+
+
+
 
 
 
@@ -10,7 +12,6 @@ const reviewsrow = {
     review: Object
   }
 };
-
 
 
 
@@ -27,7 +28,9 @@ new Vue({
   template: "#review-contener",
 
   components: {
-    reviewsrow
+    reviewsrow,
+    Carousel,
+    Slide
   },
 
   methods: {
@@ -39,7 +42,7 @@ new Vue({
      
       switch (direction) {
         case "next":
-          VueCarousel.page-change
+          Carousel.page-change
           console.log('next');
           break;
         case "prev":
