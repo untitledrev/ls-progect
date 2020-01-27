@@ -4,6 +4,7 @@
   "text-color": "#ffffff",
   "text-durk": "#333c49",
   "links-color": "#4b6fd7",
+  "bp-hd": "2560px",
   "bp-desktop-hd": "1800px",
   "bp-desktop-sr": "1600px",  
   "container-desktop-hd": "1480px",  

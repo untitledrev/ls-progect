@@ -3,7 +3,7 @@ import Vue from "vue";
 
 const btns = {
   template : "#work-btns",
-
+  props: ['works' , 'currentWork' , 'currentIndex'] ,
 };
 
 
@@ -81,8 +81,10 @@ methods:  {
 
   makeInfiniteLoopForCurIndex(value) {
     const worksAmount = this.works.length - 1;
+  /*
     if (value > worksAmount) this.currentIndex = 0;
     if (value < 0) this.currentIndex = worksAmount;
+    */
   },
   makeArrWithRequiredImages(data) {
     return data.map(item => {
@@ -97,13 +99,19 @@ methods:  {
 
 
     handleSlide(direction) {
-     
+      const worksAmount = this.works.length - 1;   
       switch (direction) {
         case "next":
+          if (this.currentIndex < worksAmount) 
           this.currentIndex++;
+         
+         
           break;
         case "prev":
+          if (this.currentIndex > 0) 
           this.currentIndex--;
+        
+        
           break;
       }
     }

@@ -16,6 +16,9 @@ script(type='text/x-template')#work-display
             img(:src="currentWork.photo" class="work__image__pictere")
         btns(
           @slide="direction => $emit('slide', direction)"
+          :works="works"
+          :currentWork="currentWork"
+          :currentIndex="currentIndex"
         )
         thumbs( :works="works"
         :currentWork="currentWork"
@@ -38,9 +41,9 @@ script(type='text/x-template')#work-btns
   .buttons__contener
     .slider__buttons
       .slider-button
-        button(@click.prevent="$emit('slide', 'next')").slider-buttons__item.slider-buttons__item--slide--prev.active
+        button(@click.prevent="$emit('slide', 'next')"  :class="{active: currentIndex < (works.length - 1) }").slider-buttons__item.slider-buttons__item--slide--prev
           +icon('arrow-down', 'strekli_right__svg')        
-        button(@click.prevent="$emit('slide', 'prev')").slider-buttons__item.slider-buttons__item--slide--next
+        button(@click.prevent="$emit('slide', 'prev')"  :class="{active: currentIndex > 0 }").slider-buttons__item.slider-buttons__item--slide--next
           +icon('arrow-down', 'strekli_left__svg')  
 script(type='text/x-template')#work-info   
   .works__tags

@@ -15,34 +15,38 @@ html(lang="ru")
             picture
               - var PH_1800_1x =  require("images/content/paralax_header-1800@1x.jpg");
               - var PH_1800_2x =  require("images/content/paralax_header-1800@2x.jpg");
+              source(media="(min-width:1800px)"  srcset=`${PH_1800_2x}`)  
               source(media="(min-width:1200px)"  srcset=`${PH_1800_1x} 1x ,${PH_1800_2x}  2x`)
               - var PH_1200_1x  =  require("images/content/paralax_header-1200@1x.jpg");
               - var PH_1200_2x =  require("images/content/paralax_header-1200@2x.jpg");         
               source(media="(min-width:768px)"  srcset=`${PH_1200_1x} 1x ,${PH_1200_2x}  2x`)
               img(src="#"   class="parallax__header__img parallax__img")         
-          .parallax__paralax_holm.parallax__layer(data-speed="0.2")
+          .parallax__paralax_holm.parallax__layer(data-speed="0.15")
             picture
               - var PHo_1800_1x =  require("images/content/paralax_holm-1800@1x.png");
-              - var PHo_1800_2x =  require("images/content/paralax_holm-1800@2x.png");           
+              - var PHo_1800_2x =  require("images/content/paralax_holm-1800@2x.png");     
+              source(media="(min-width:1800px)"  srcset=`${PHo_1800_2x}`)                     
               source(media="(min-width:1200px)"  srcset=`${PHo_1800_1x} 1x ,${PHo_1800_2x}  2x`)
               - var PHo_1200_1x =  require("images/content/paralax_holm-1200@1x.png");
               - var PHo_1200_2x =  require("images/content/paralax_holm-1200@2x.png");                  
               source(media="(min-width:768px)"  srcset=`${PHo_1200_1x} 1x ,${PHo_1200_2x}  2x`)
               img(src="#"   class="paralax_holm__img parallax__img")         
-          .parallax__paralax_most.parallax__layer(data-speed="0.4")
+          .parallax__paralax_most.parallax__layer(data-speed="0.2")
             picture
               - var PM_1800_1x =  require("images/content/paralax_most-1800@1x.png");
-              - var PM_1800_2x =  require("images/content/paralax_most-1800@2x.png");              
+              - var PM_1800_2x =  require("images/content/paralax_most-1800@2x.png");  
+              source(media="(min-width:1800px)"  srcset=`${PM_1800_2x}`)                                
               source(media="(min-width:1200px)"  srcset=`${PM_1800_1x} 1x ,${PM_1800_2x}  2x`)
               - var PM_1200_1x =  require("images/content/paralax_most-1200@1x.png");
               - var PM_1200_2x =  require("images/content/paralax_most-1200@2x.png");                  
               source(media="(min-width:768px)"  srcset=`${PM_1200_1x} 1x ,${PM_1200_2x}  2x`)
               img(src="#"   class="paralax_most__img parallax__img")               
 
-          .parallax__paralax_footer.parallax__layer(data-speed="0.4")
+          .parallax__paralax_footer.parallax__layer(data-speed="0.25")
             picture
               - var PF_1800_1x =  require("images/content/paralax_footer-1800@1x.png");
-              - var PF_1800_2x =  require("images/content/paralax_footer-1800@2x.png");                 
+              - var PF_1800_2x =  require("images/content/paralax_footer-1800@2x.png");    
+              source(media="(min-width:1800px)"  srcset=`${PF_1800_2x}`)                               
               source(media="(min-width:1200px)"  srcset=`${PF_1800_1x} 1x ,${PF_1800_2x}  2x`)
               - var PF_1200_1x =  require("images/content/paralax_footer-1200@1x.png");
               - var PF_1200_2x =  require("images/content/paralax_footer-1200@2x.png");                    
@@ -123,8 +127,8 @@ html(lang="ru")
                                 .form__item__icon__container
                                   +icon(`${contact.svg}`,'form__item__icon_avator')      
                               .form__item__container
-                                label.form__item__title #{contact.label}
-                                input(class="form__item_input" placeholder=`${contact.placeholder}` )
+                                label.form__item__title(for=`input${contact.svg}`) #{contact.label}
+                                input(class="form__item_input" id=`input${contact.svg}` placeholder=`${contact.placeholder}` )
                     if contact.svg == 'chat'
                       .form__item.form__item__textarea--width
                         
@@ -132,8 +136,8 @@ html(lang="ru")
                             .form__item__icon__container
                               +icon(`${contact.svg}`,'form__item__icon_avator')      
                           .form__item__container
-                            label.form__item__title #{contact.label}
-                            textarea(class="form__item_input form__item__textarea" placeholder=`${contact.placeholder}`)
+                            label.form__item__title(for=`textarea${contact.svg}`) #{contact.label}
+                            textarea(id=`textarea${contact.svg}` class="form__item_input form__item__textarea" placeholder=`${contact.placeholder}`)
                   .form__button__container
                     button.form__button #{contact_button}
       

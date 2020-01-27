@@ -31,6 +31,24 @@ new Vue({
   },
 
   methods: {
+
+    handleSlideClick (dataset)  {
+      console.log(dataset.index )
+    },
+    handleSlide(direction) {
+     
+      switch (direction) {
+        case "next":
+          VueCarousel.page-change
+          console.log('next');
+          break;
+        case "prev":
+          console.log('prev');        
+          break;
+      }
+    },
+
+
     makeArrWithRequiredImages(data) {
       return data.map(item => {
         const requiredPic = require(`../images/content/${item.avatar}`);

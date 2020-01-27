@@ -1,5 +1,9 @@
 
-
+@mixin desktopHdBig() {
+  @media screen and (min-width: $bp-desktop-hd) {
+    @content;
+  }
+}
 
 
 @mixin desktopHd() {
