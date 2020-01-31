@@ -1,3 +1,240 @@
+<template lang="pug">
+  main#main.main
+
+    - 
+      var skills__list =  [
+          {
+            'name' : ''
+          },
+          {
+            'name' : 'Front-end',
+              'skills' : [
+                {'name': 'HTML5','prosent' : '10'},
+                {'name': 'CSS3','prosent' : '85'},
+                {'name': 'Javascript','prosent' : '75'},      
+                {'name': 'Jquery','prosent' : '45'}    
+              ]
+            }
+        ]
+    header.header
+      .container.header__container
+        .logo-name
+          .logo-name__container
+            .logo-name__avatar
+            .logo-name__title Ивашов Иван 12
+        .name-panel
+          .name-panel__container
+            .name-panel__text Панель администрирования
+        .output
+          .output__container
+            .output__text 
+              a(href="#auto") Выйти
+    nav.nav#nav
+      .container.nav__container
+        - var menys = ['Обо мне','Работы','Отзывы']
+        ul.nav__list
+          each meny, index in menys
+            if index == 0
+              - var active = 'active'
+            else
+              - var active = ''  
+            li().nav__item
+              a(href="#" class=`${active}`).nav__item-list #{meny}
+    section.about#about
+      .about__container.container
+        .title__container
+          h2.h2__title Блок «Обо мне»
+          button.add-gruppe
+            .add-button.add-button--mini
+              .add-button__icon +
+            .add-gruppe__title Добавить группу
+        .about__block-plashka
+          .about__list
+            each skill in skills__list 
+              .about__iteam
+                .plashka__container.plashka__container--new
+                  .plashka-title__container
+                    .input__container
+                      if skill.name != ''
+                        input(placeholder="Название новой группы").input-block
+                      else
+                        input(placeholder="Название новой группы" value=`${skill.name}`).input-block
+                      .plashka-title__button
+                        .buttons-agree__container
+                          .buttons-agree__list
+                          -var buttons = ['good' , 'close']
+                            each button in buttons                  
+                              .button__iteam
+                                .button__container
+                                  button(class=`button--${button}`).button-agree                                  
+                    .plashka__content
+                       if skill.name != ''
+                        .skills__container
+                          .skills__list
+                            each one_skill in skill.skills 
+                              .skill__item
+                                .skill__item__container
+                                  .skill__name
+                                    input(value=`${one_skill.name}` class="input-block skill__input")
+                                  .skill__prosent
+                                    input(type="number" min="1" max="100" value=`${one_skill.prosent}` class="input-block skill__input skill__prosent-input")
+                                    .prosent__title %                            
+                                  .skill__button-edit
+                                    - var button_edit = ['edit' , 'remove']
+                                      .button-edit__list
+                                        each button in button_edit
+                                          .button-edit__iteam
+                                            button(class=`button-edit--${button}`).button-edit
+
+
+                    .plashka__new-skill
+                      .new-skill__container
+                        .new-skill
+                          input(placeholder="Название навыка").input-block.input--new-skill
+                        .new-skill-procent
+                          input(placeholder="100 %").input-block.input--new-skill-procent
+                        .new-skill__button
+                          button.add-button.add-button--big
+                            .add-button__icon +
+    section#works.works
+      .works__container.container
+        .title__container
+          h2.h2__title Блок «Работы»
+        section.work-edit.edit-block__container#work-edit
+          .edit-block Редактирование работы
+          .edit__container
+            .load-file__block
+              .load-file__container
+                form.load-file__form
+                  .load-file__title Перетащите или загрузите для загрузки изображения
+                  input.load-file__input
+                  button.button-click.add-button Загрузить
+            .form-add-work__block
+              .form-add-work__container
+                .form-add-work__list
+                  - var formDate = ['Название' , 'Ссылка']
+                    each input , index in formDate
+                      .form-add__item
+                        label(for=`label${index}` class="form-label") #{input}
+                        .input-block__form-add
+                          input(placeholder="" id=`label${index}`).input-block.input--form-add
+                    .form-add__item
+                        label(for=`label3` class="form-label") Описание
+                        .input-block__form-add
+                          textarea.textarea-block.textarea--form-add
+                    .form-add__item
+                        label(for="label4" class="form-label") Добавление тэга
+                        .input-block__form-add
+                          input(placeholder="" id="label4").input-block.input--form-add
+                        .tags__contener
+                          .tags__list
+                            - var tags = ['html', 'css' , 'javascript']
+                            each tag in tags
+                              .tags__iteam 
+                                .tags__iteam__title #{tag}
+                                button.tags__iteam__icon x
+                    .form-add__button
+                      button.button-no-click.form-add--button-no-click Отмена
+                      button.button-click.form-add--button-click.add-button Сохранить      
+        section.works-list#works-list
+          .works-list__container
+            .work-iteam.work-iteam--button
+              .block-iteam__container
+                .block-add-button__block
+                  .block-add-button__container
+                    button.block-add-button +
+                    .block-add-title Добавить работу
+            .work-iteam
+              .work-iteam__container
+                .block__image-block
+                  .block__image
+                    img
+                  .block__tags
+                    .tags__list
+                    - var tags = ['html', 'css' , 'javascript']
+                    each tag in tags
+                      .tags__iteam.tags--works 
+                        .tags__iteam__title #{tag}                  
+                .block__content
+                  .block__title Сайт школы образования
+                  .block__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                  .block__link
+                    a(href="" class="block__link__text") http://loftschool.ru
+                  .block__button
+                    .block__button__list
+                      - 
+                        var buttons = [ 
+                          {'title':'Править' , 'icon' : 'edit'}, 
+                          {'title':'Удалить' , 'icon' : 'remove'},
+                          ]
+
+                      each button in buttons
+                        .block__button__item
+                          .block__button__title #{button.title}                     
+                          .block__button__icon                    
+
+    section#reviews.reviews
+     .reviews__container.container
+        .title__container     
+          h2.h2__title  Блок «Отзывы»
+        section.reviews-edit.edit-block__container#reviews-edit
+          .edit-block Новый отзыв
+          .edit__container.reviews-edit__block          
+            .reviews-edit__file.form
+              .file__container
+                .file__icon
+                  img
+                .file__title Добавить фото
+                input.load-file__input
+            .reviews-input
+
+                    .reviews-input__block
+                      - var formDate = ['Имя автора' , 'Титал автора']
+                        each input , index in formDate
+                          .form-add__item.reviews--input
+                            label(for=`label${index}` class="form-label") #{input}
+                            .input-block__form-add
+                              input(placeholder="" id=`label${index}`).input-block.input--form-add
+                        
+                    .form-add__item
+                        label(for=`label3` class="form-label") Отзывы
+                        .input-block__form-add
+                          textarea.textarea-block.textarea--form--add.reviews--textarea
+                    .form-add__button
+                      button.button-no-click.form-add--button-no-click Отмена
+                      button.button-click.form-add--button-click.add-button Сохранить                
+        section.reviews-list#reviews-list
+          .reviews-list__container
+            .review-iteam.review-iteam--button
+              .block-iteam__container
+                .block-add-button__block
+                  .block-add-button__container.block-add-button__container--reviews
+                    button.block-add-button +
+                    .block-add-title Добавить Отзыв
+            .work-iteam
+              .work-iteam__container
+                .block__user
+                  .user__avatar
+                    img
+                  .user__content
+                    .user__name Владимир Сабанцев
+                    .user__pr Преподаватель                        
+                .block__content
+                  .block__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+                  .block__button
+                    .block__button__list
+                        - 
+                          var buttons = [ 
+                            {'title':'Править' , 'icon' : 'edit'}, 
+                            {'title':'Удалить' , 'icon' : 'remove'},
+                            ]
+
+                        each button in buttons
+                          .block__button__item
+                            .block__button__title #{button.title}                     
+                            .block__button__icon              
+</template>
+
 <style  lang="postcss">
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
 @import "normalize.css";
@@ -132,246 +369,457 @@ header {
 }
 
 .nav__item {
-  padding: 26px;
   font-size: 16px;
-  border-bottom: 3px solid #fff;
-  &-list {
-    color: #414c63;
-  }
-  &.active ,  &:hover {
-    border-bottom: 3px solid #383bcf;
-    & .nav__item-list {
-    color: #383bcf;
-  }
 
+  &-list {
+    padding: 26px;
+    color: #414c63;
+    border-bottom: 3px solid #fff;
+    display: block;
+    &.active,
+    &:hover {
+      border-bottom: 3px solid #383bcf;
+      & .nav__item-list {
+        color: #383bcf;
+      }
+    }
   }
 }
+
+.title__container {
+  padding-top: 62px;
+  padding-bottom: 62px;
+  display: flex;
+}
+.h2__title {
+  font-size: 21px;
+  color: #414c63;
+  font-weight: bold;
+}
+.plashka__container {
+  background-color: #fff;
+  box-shadow: 1px 1px 8px #c5bfbf;
+  padding: 20px;
+}
+.about__list {
+  display: flex;
+  margin-left: -30px;
+}
+.about__iteam {
+  width: 50%;
+  margin-left: 30px;
+}
+
+.input-block {
+  width: 100%;
+  max-width: 270px;
+  border: none;
+  padding: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-bottom: 1px solid;
+}
+
+.input__container {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dedee0;
+  padding-left: 10px;
+  display: flex;
+}
+.plashka-title__button {
+  margin-left: auto;
+}
+.plashka__content {
+  min-height: 230px;
+  padding-left: 10px;
+}
+.input--new-skill {
+  max-width: 220px;
+}
+.input--new-skill-procent {
+  max-width: 75px;
+}
+.new-skill__container {
+  display: flex;
+  justify-content: flex-end;
+}
+.new-skill__button {
+  margin-left: 30px;
+}
+.new-skill {
+  margin-right: 10px;
+}
+.add-button__icon {
+  margin: 0px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 30px;
+}
+.add-button--big .add-button__icon {
+  font-size: 30px;
+}
+.add-button--mini .add-button__icon {
+  font-size: 16px;
+}
+.add-button {
+  border: none;
+  display: flex;
+  background: linear-gradient(0.25turn, #1b5ce3 50%, #373bcf 90%, #443acc);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+.add-button--big {
+  width: 38px;
+  height: 38px;
+}
+.add-button--mini {
+  width: 20px;
+  height: 20px;
+}
+
+.button--good {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: svg-load("good.svg", fill=#00d70a, width=100%, height=100%);
+}
+.button--close {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: svg-load("close.svg", fill=#bf2929, width=100%, height=100%);
+}
+.skill__item__container {
+  display: flex;
+  margin-top: 15px;
+}
+.skill__prosent {
+  display: flex;
+}
+.prosent__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-edit__list {
+  display: flex;
+}
+
+.skill__name {
+  flex-grow: 1;
+}
+.skill__input {
+  width: 100%;
+}
+.plashka__new-skill {
+  margin-top: 30px;
+}
+
+.skill__prosent-input {
+  padding-left: 10px;
+  width: 60px;
+}
+.skill__button-edit {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-block__container {
+  background-color: #fff;
+  box-shadow: 0.0625rem 0.0625rem 0.5rem #c5bfbf;
+  padding: 1.25rem;
+  margin-bottom: 30px;
+}
+.edit-block {
+  border-bottom: 1px solid #dedee0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #414c63;
+  padding-left: 10px;
+  padding-bottom: 25px;
+}
+.edit__container {
+  margin-top: 50px;
+  display: flex;
+}
+.load-file__block {
+  width: 50%;
+}
+.form-add-work__block {
+  width: 50%;
+}
+.load-file__container {
+  margin-right: 30px;
+}
+.load-file__form {
+  min-height: 270px;
+  width: 100%;
+  background: #dee4ed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px dashed #a1a1a1;
+}
+.edit__container {
+}
+.load-file__input {
+  display: none;
+}
+.button-click {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 30px;
+  padding-left: 35px;
+  padding-right: 35px;
+  max-width: 180px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.load-file__title {
+  color: rgba(65, 76, 99, 0.5);
+  font-size: 1rem;
+  max-width: 320px;
+  margin-bottom: 30px;
+  text-align: center;
+  line-height: 30px;
+}
+.input--form-add {
+  max-width: none;
+  color: #414c63;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.form-add__item {
+  margin-bottom: 30px;
+}
+.form-label {
+  color: rgba(65, 76, 99, 0.5);
+}
+.textarea-block {
+  margin: 0px;
+  width: 100%;
+  min-height: 150px;
+  border: 1px solid #d9dbe0;
+  padding: 20px;
+  margin-top: 20px;
+}
+.tags__iteam {
+  font-size: 13px;
+  background: #f4f4f4;
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: 10px;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.tags__iteam__icon {
+  margin-left: 0.9375rem;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tags__list {
+  display: flex;
+}
+.button-no-click {
+  color: #383bcf;
+  border: none;
+  background: none;
+  font-size: 16px;
+}
+.form-add--button-no-click {
+  margin-right: 70px;
+}
+.form-add__button {
+  display: flex;
+  justify-content: flex-end;
+}
+.works-list__container {
+  display: flex;
+}
+.work-iteam {
+  width: 32%;
+  margin-left: 30px;
+}
+.works-list__container {
+  margin-left: -30px;
+}
+.block-add-button__container {
+  min-height: 540px;
+  background: linear-gradient(90deg, #1b5ce3 50%, #373bcf 90%, #443acc);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.block-add-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px;
+  max-width: 100px;
+  text-align: center;
+  margin-top: 30px;
+}
+.block-add-button {
+  height: 145px;
+  width: 145px;
+  border-radius: 50%;
+  background: none;
+  border: 1px solid #fff;
+  font-size: 72px;
+  color: #fff;
+}
+.block__content {
+  padding: 30px;
+  font-size: 16px;
+}
+.work-iteam__container {
+  background-color: #fff;
+  box-shadow: 0.0625rem 0.0625rem 0.5rem #c5bfbf;
+  height: 100%;
+}
+.block__image-block {
+  min-height: 185px;
+  background: #eee;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.block__title {
+  font-size: 18px;
+  color: #414c63;
+  font-weight: bold;
+}
+.block__text {
+  line-height: 30px;
+  color: rgba(65, 76, 99, 0.7);
+  margin-top: 20px;
+  height: 120px;
+  overflow: hidden;
+}
+.block__link {
+  margin-top: 35px;
+}
+.block__button {
+  margin-top: 50px;
+}
+.block__button__list {
+  display: flex;
+}
+.block__button__item {
+  width: 50%;
+  color: rgba(65, 76, 99, 0.5);
+}
+.block__link__text {
+  color: #383bcf;
+}
+.block__button__item:last-child {
+  text-align: right;
+}
+.block__tags {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  bottom: 10px;
+  justify-content: flex-end;
+}
+.tags--works {
+  background: #fff;
+  color: rgba(40, 51, 64, 0.7);
+}
+.reviews-edit__file {
+  margin-right: 30px;
+}
+.file__icon {
+  height: 200px;
+  width: 200px;
+  background: #dee4ed;
+  border-radius: 50%;
+}
+.file__title {
+  font-size: 16px;
+  color: #383bcf;
+  text-align: center;
+  margin-top: 30px;
+}
+.reviews-input {
+  flex-grow: 1;
+  max-width: 615px;
+}
+.reviews--input {
+  width: 50%;
+}
+.reviews-input__block {
+  display: flex;
+  margin-left: -30px;
+}
+.reviews--input {
+  margin-left: 30px;
+}
+.reviews--textarea {
+  min-height: 115px;
+}
+.reviews-list__container {
+  display: flex;
+  margin-left: -30px;
+}
+.review-iteam {
+  width: 32%;
+  margin-left: 30px;
+}
+.block-add-button__container--reviews {
+  min-height: 380px;
+}
+.block__user {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #dedee0;
+
+  align-items: center;
+}
+.user__name {
+  font-size: 18px;
+  color: #414c63;
+  font-weight: bold;
+}
+.user__pr {
+  font-size: 16px;
+  color: rgba(65, 76, 99, 0.5);
+  margin-top: 8px;
+}
+.user__avatar {
+  height: 50px;
+  width: 50px;
+  background: #eee;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+main {
+  margin-bottom: 50px;
+}
+.add-gruppe {
+  display: flex;
+  background: none;
+  color: #383bcf;
+  font-size: 16px;
+  margin-left: 60px;
+}
+.add-gruppe__title
+{
+      margin-left: 15px;
+}
 </style>
-<template lang="pug">
-  main#main.main
-    - 
-      var skills__list =  [
-          {
-            'name' : ''
-          },
-          {
-            'name' : 'Front-end',
-              'skills' : [
-                {'name': 'HTML5','prosent' : '10'},
-                {'name': 'CSS3','prosent' : '85'},
-                {'name': 'Javascript','prosent' : '75'},      
-                {'name': 'Jquery','prosent' : '45'}    
-              ]
-            }
-        ]
-    header.header
-      .container.header__container
-        .logo-name
-          .logo-name__container
-            .logo-name__avatar
-            .logo-name__title  Владимир Астаханов
-        .name-panel
-          .name-panel__container
-            .name-panel__text Панель администрирования
-        .output
-          .output__container
-            .output__text 
-              a(href="#auto") Выйти
-    nav.nav#nav
-      .container.nav__container
-        - var menys = ['Обо мне','Работы','Отзывы']
-        ul.nav__list
-          each meny, index in menys
-            if index == 0
-              - var active = 'active'
-            else
-              - var active = ''  
-            li(class=`${active}`).nav__item
-              a(href="#").nav__item-list #{meny}
-    section.about#about
-      .about__container.container
-        .title__container
-          h2.h2__title Блок «Обо мне»
-          button.add-gruppe
-            .add-button
-              .add-button__icon.add-button--mini
-            .add-gruppe__title Добавить группу
-        .about__block-plashka
-          .about__list
-            each skill in skills__list 
-              .about__iteam
-                .plashka__container.plashka__container--new
-                  .plashka-title__container
-                    .input__container
-                      if skill.name != ''
-                        input(placeholder="Название новой группы").input-block
-                      else
-                        input(placeholder="Название новой группы" value=`${skill.name}`).input-block
-                    .plashka-title__button
-                      .buttons-agree__container
-                        .buttons-agree__list
-                        -var buttons = ['good' , 'close']
-                          each button in buttons                  
-                            .button__iteam
-                              .button__container
-                                button(class=`button--${button}`).button-agree
-                    .plashka__content
-                       if skill.name != ''
-                        .skills__container
-                          .skills__list
-                            each one_skill in skill.skills 
-                              .skill__item
-                                .skill__item__container
-                                  .skill__name #{one_skill.name}
-                                  .skill__prosent #{one_skill.prosent}
-                                  .skill__button-edit
-                                    - var button_edit = ['edit' , 'remove']
-                                      .button-edit__list
-                                        each button in button_edit
-                                          .button-edit__iteam
-                                            button(class="button-edit--${button}").button-edit
-
-
-                    .plashka__new-skill
-                      .new-skill__container
-                        .new-skill
-                          input(placeholder="Название навыка").input-block.input--new-skill
-                        .new-skill-procent
-                          input(placeholder="100 %").input-block.input--new-skill-procent
-                        .new-skill__button
-                          .add-button
-                            .add-button__icon.add-button--big                 
-    section#works.works
-      .works__container.container
-        .title__container
-          h2.h2__title Блок «Работы»
-        section.work-edit#work-edit
-          .edit__block Редактирование работы
-          .edit__container
-            .load-file__block
-              .load-file__container
-                form.load-file__form
-                  .load-file__title Перетащите или загрузите для загрузки изображения
-                  input.load-file__input
-                  button.button-click Загрузить
-            .form-add-work__block
-              .form-add-work__container
-                .form-add-work__list
-                  - var formDate = ['Название' , 'Ссылка']
-                    each input , index in formDate
-                      .form-add__item
-                        label(for=`label${index}`) #{input}
-                        .input-block__form-add
-                          input(placeholder="" id=`label${index}`).input-block.input--form-add
-                    .form-add__item
-                        label(for=`label3`) Описание
-                        .input-block__form-add
-                          textarea.textarea-block.textarea--form-add
-                    .form-add__item
-                        label(for="label4") Добавление тэга
-                        .input-block__form-add
-                          input(placeholder="" id="label4").input-block.input--form-add
-                        .tags__contener
-                          .tags__list
-                            - var tags = ['html', 'css' , 'javascript']
-                            each tag in tags
-                              .tags__iteam 
-                                .tags__iteam__title #{tag}
-                                .tags__iteam__icon close
-                    .form-add__button
-                      button.button-no-click.form-add--button-no-click Отмена
-                      button.button-click.form-add--button-click Загрузить      
-        section.works-list#works-list
-          .works-list__container
-            .work-iteam.work-iteam--button
-              .block-iteam__container
-                .block-add-button
-                  .block-add-button__container
-                    button.block-add-button +
-                    .block-add-title Добавить работу
-            .work-iteam
-              .work-iteam__container
-                .block__image-block
-                  .block__image
-                    img
-                  .block__tags
-                    .tags__list
-                    - var tags = ['html', 'css' , 'javascript']
-                    each tag in tags
-                      .tags__iteam 
-                        .tags__iteam__title #{tag}                  
-                .block__content
-                  .block__title Сайт школы образования
-                  .block__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                  .block__link
-                    a(href="") http://loftschool.ru
-                  .block__button
-                    .block__button__list
-                    - 
-                      var buttons = [ 
-                        {'title':'Править' , 'icon' : 'edit'}, 
-                        {'title':'Удалить' , 'icon' : 'remove'},
-                        ]
-
-                    each button in buttons
-                      .block__button__item
-                        .block__button__title #{button.title}                     
-                        .block__button__icon #{button.icon}                     
-
-    section#reviews.reviews
-     .reviews__container.container
-        .title__container Блок «Отзывы»
-        section.reviews-edit#reviews-edit
-          .edit__block Новый отзыв
-          .edit__container.reviews-edit__block          
-            .reviews-edit__file.form
-              .file__container
-                .file__icon
-                  img
-                .file__title Добавить фото
-                input.load-file__input
-            .reviews-input
-                  - var formDate = ['Имя автора' , 'Тутал автора']
-                    each input , index in formDate
-                      .form-add__item
-                        label(for=`label${index}`) #{input}
-                        .input-block__form-add
-                          input(placeholder="" id=`label${index}`).input-block.input--form-add
-                    .form-add__item
-                        label(for=`label3`) Отзывы
-                        .input-block__form-add
-                          textarea.textarea-block.textarea--form--add
-                    .form-add__button
-                      button.button-no-click.form-add--button-no-click Отмена
-                      button.button-click.form-add--button-click Загрузить                
-        section.reviews-list#reviews-list
-          .reviews-list__container
-            .review-iteam.review-iteam--button
-              .block-iteam__container
-                .block-add-button
-                  .block-add-button__container
-                    button.block-add-button +
-                    .block-add-title Добавить Отзыв
-            .review-iteam
-              .review-iteam__container
-                .block__user
-                  .user__avatar
-                    img
-                  .user__content
-                    .user__name Владимир Сабанцев
-                    .user__pr Преподаватель                        
-                .block__content
-                  .block__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-                  .block__button
-                    .block__button__list
-                    - 
-                      var buttons = [ 
-                        {'title':'Править' , 'icon' : 'edit'}, 
-                        {'title':'Удалить' , 'icon' : 'remove'},
-                        ]
-
-                    each button in buttons
-                      .block__button__item
-                        .block__button__title #{button.title}                     
-                        .block__button__icon #{button.icon}               
-</template>

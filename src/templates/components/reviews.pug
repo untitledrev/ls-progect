@@ -9,7 +9,7 @@ script(type='text/x-template')#review-contener
           +icon('arrow-down', 'strekli_right__svg')
     .reviews-sliders.lg-8           
       .review-contener
-        carousel(@page-change="" :paginationSize="1" :navigationEnabled="true"  :per-page="2")
+        carousel(@page-change="" :perPageCustom="[[0,1],[768,2]]"   :paginationSize="1" :navigationEnabled="true"  )
           slide(v-for="review in reviews" @slideclick="handleSlideClick"  data-index="0")
             reviewsrow(
               :review="review"   
