@@ -21,14 +21,20 @@
         .logo-name
           .logo-name__container
             .logo-name__avatar
-            .logo-name__title Ивашов Иван 12
+              .user__avatar
+                img
+            .logo-name__title
+              .logo-name__title__text Ивашов Иван
+              .output__text.output__text--mobile
+                a(href="#auto").output__link Выйти              
+              
         .name-panel
           .name-panel__container
             .name-panel__text Панель администрирования
-        .output
+        .output.output--decstope
           .output__container
             .output__text 
-              a(href="#auto") Выйти
+              a(href="#auto").output__link Выйти
     nav.nav#nav
       .container.nav__container
         - var menys = ['Обо мне','Работы','Отзывы']
@@ -56,9 +62,9 @@
                   .plashka-title__container
                     .input__container
                       if skill.name != ''
-                        input(placeholder="Название новой группы").input-block
+                        input(placeholder="Название новой группы").input-block.input-block--skill-block-name
                       else
-                        input(placeholder="Название новой группы" value=`${skill.name}`).input-block
+                        input(placeholder="Название новой группы" value=`${skill.name}`).input-block.input-block--skill-block-name
                       .plashka-title__button
                         .buttons-agree__container
                           .buttons-agree__list
@@ -101,8 +107,8 @@
         .title__container
           h2.h2__title Блок «Работы»
         section.work-edit.edit-block__container#work-edit
-          .edit-block Редактирование работы
-          .edit__container
+          .edit-block.edit-block--work  Редактирование работы
+          .edit__container.edit__container--work
             .load-file__block
               .load-file__container
                 form.load-file__form
@@ -205,13 +211,13 @@
                       button.button-click.form-add--button-click.add-button Сохранить                
         section.reviews-list#reviews-list
           .reviews-list__container
-            .review-iteam.review-iteam--button
+            .work-iteam.review-iteam--button
               .block-iteam__container
                 .block-add-button__block
                   .block-add-button__container.block-add-button__container--reviews
                     button.block-add-button +
                     .block-add-title Добавить Отзыв
-            .work-iteam
+            .work-iteam.review-iteam
               .work-iteam__container
                 .block__user
                   .user__avatar
@@ -255,8 +261,7 @@ body {
   font-family: "Open Sans", Helvetica, sans-serif;
   font-size: 15px;
   line-height: 1.42;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
 }
 
 .wrapper {
@@ -356,7 +361,9 @@ header {
 
 .container {
   margin: 0 auto;
-  max-width: 1080px;
+  max-width: 1140px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .wrapper {
   background-color: #f6f9fe;
@@ -626,6 +633,8 @@ header {
   margin-left: 0.9375rem;
   font-size: 20px;
   font-weight: 700;
+  border: none;
+  background: none;
   cursor: pointer;
 }
 .tags__list {
@@ -818,8 +827,181 @@ main {
   font-size: 16px;
   margin-left: 60px;
 }
-.add-gruppe__title
-{
-      margin-left: 15px;
+.add-gruppe__title {
+  margin-left: 15px;
+}
+.tags__contener {
+  margin-top: 20px;
+}
+.logo-name__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.output__text--mobile {
+  display: none;
+}
+.output__link
+ {
+  text-decoration: underline;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+@media screen and (max-width: 992px) {
+  .edit__container--work {
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+  }
+  .form-add-work__block,
+  .load-file__block {
+    width: 100%;
+  }
+  .load-file__container {
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  .form-add-work__block {
+    margin-top: 60px;
+  }
+  .form-add__button {
+    justify-content: center;
+  }
+  .work-iteam {
+    width: 50%;
+  }
+  .reviews-input__block {
+    display: block;
+  }
+  .reviews--input {
+    width: 65%;
+  }
+  .title__container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .edit-block__container {
+    margin-bottom: 10px;
+  }
+
+  .reviews-input__block {
+    margin-left: 0px;
+  }
+  .reviews--input {
+    width: 100%;
+    margin-left: 0px;
+  }
+  .about__list {
+    display: block;
+    margin: 0px;
+  }
+  .about__iteam {
+    width: auto;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  .works-list__container {
+    display: block;
+    margin: 0px;
+  }
+  .reviews-list__container {
+    display: block;
+    margin: 0px;
+  }
+  .reviews-edit__block {
+    display: block;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .block-add-button__container {
+    min-height: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-direction: row;
+  }
+
+  .block-add-button {
+    height: 40px;
+    width: 40px;
+
+    font-size: 24px;
+  }
+  .block-add-title {
+    margin-top: 0px;
+    margin-left: 22px;
+    max-width: none;
+  }
+  .block-add-button__container--reviews,
+  .block-add-button__container {
+    min-height: auto;
+  }
+
+  .work-iteam {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  .work-iteam--button,
+  .review-iteam--button {
+    max-width: none;
+  }
+  .file__icon {
+    margin: 0 auto;
+    display: block;
+  }
+  .reviews-input {
+    margin-top: 50px;
+  }
+  .title__container {
+    display: block;
+  }
+  .add-gruppe {
+    margin-top: 30px;
+    margin-left: 0px;
+  }
+  .name-panel {
+    display: none;
+  }
+  .output__text--mobile {
+    display: block;
+  }
+  .output--decstope {
+        display: none;
+  }
+  .header__container {
+       justify-content: flex-start; 
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .logo-name {
+        margin-left: 10px;
+  }
+  .title__container {
+    padding-left: 10px;
+  }
+  .container {
+    padding: 0px;
+  }
+  .input__container {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .plashka-title__container .input-block {
+  }
+  .about__list {
+  }
+  .input-block--skill-block-name {
+    margin-left: 30px;
+  }
+  .nav__item-list {
+    padding: 20px;
+  }
 }
 </style>
