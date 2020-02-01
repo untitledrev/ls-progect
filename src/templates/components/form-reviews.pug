@@ -1,0 +1,27 @@
+script(type='text/x-template')#form-review
+    form.form
+      .form__item-one__container
+        .form__item                        
+          .form__item__icon 
+            .form__item__icon__container
+              +icon('avatar','form__item__icon_avator')      
+          .form__item__container
+            label.form__item__title(for=`inputavatar`) Введите ваше имя
+            input(class="form__item_input" id=`inputavatar` placeholder="Ковальчук Дмитрий")
+      .form__item-one__container
+        .form__item                        
+          .form__item__icon 
+            .form__item__icon__container
+              +icon('envelope','form__item__icon_avator')      
+          .form__item__container
+            label.form__item__title(for=`inputenvelope`) Введите ваш email
+            input(class="form__item_input" id=`inputenvelope` placeholder="loftschool@study.com")
+      .form__item.form__item__textarea--width   
+        .form__item__icon 
+          .form__item__icon__container
+            +icon('chat','form__item__icon_avator')      
+        .form__item__container
+          label.form__item__title(for=`textareachat`) Сообщение к письму
+          textarea(id='textareachat' class="form__item_input form__item__textarea" placeholder="Требуется ваша помощь в создании сайта. \nИнтересуют сроки и цена вопроса")
+      .form__button__container
+        button.form__button Отправить

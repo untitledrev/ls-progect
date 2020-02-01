@@ -109,37 +109,15 @@ html(lang="ru")
       .reviews__contact
         .reviews__contact-bg2__container
           section#reviews.reviews
-              #reviews-component
-
-                        
+              #reviews-component                  
           
           section#contact.contact
             .container
               .contact__title__container
                 h2.section-title.contact__contact__title--text  #{contact_title}
               .form-container.row
-                .form
-                  each contact in contacts
-                    if contact.svg != 'chat'
-                      .form__item-one__container
-                        .form__item                        
-                              .form__item__icon 
-                                .form__item__icon__container
-                                  +icon(`${contact.svg}`,'form__item__icon_avator')      
-                              .form__item__container
-                                label.form__item__title(for=`input${contact.svg}`) #{contact.label}
-                                input(class="form__item_input" id=`input${contact.svg}` placeholder=`${contact.placeholder}` )
-                    if contact.svg == 'chat'
-                      .form__item.form__item__textarea--width
-                        
-                          .form__item__icon 
-                            .form__item__icon__container
-                              +icon(`${contact.svg}`,'form__item__icon_avator')      
-                          .form__item__container
-                            label.form__item__title(for=`textarea${contact.svg}`) #{contact.label}
-                            textarea(id=`textarea${contact.svg}` class="form__item_input form__item__textarea" placeholder=`${contact.placeholder}`)
-                  .form__button__container
-                    button.form__button #{contact_button}
+                #form-review-component
+
       
       
       footer#footer.footer

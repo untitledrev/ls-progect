@@ -22,7 +22,7 @@
           .logo-name__container
             .logo-name__avatar
               .user__avatar
-                img
+                img(src="../images/content/photo__my.jpg")
             .logo-name__title
               .logo-name__title__text Ивашов Иван
               .output__text.output__text--mobile
@@ -61,18 +61,20 @@
                 .plashka__container.plashka__container--new
                   .plashka-title__container
                     .input__container
-                      if skill.name != ''
+                      if skill.name == ''
                         input(placeholder="Название новой группы").input-block.input-block--skill-block-name
                       else
                         input(placeholder="Название новой группы" value=`${skill.name}`).input-block.input-block--skill-block-name
                       .plashka-title__button
                         .buttons-agree__container
                           .buttons-agree__list
-                          -var buttons = ['good' , 'close']
-                            each button in buttons                  
-                              .button__iteam
-                                .button__container
-                                  button(class=`button--${button}`).button-agree                                  
+                            -var buttons = ['tick' , 'cross']
+                              each button in buttons                  
+                                .button__iteam
+                                  .button__container
+                                    button(class=`button--${button}`).button-agree
+                                      
+                                                             
                     .plashka__content
                        if skill.name != ''
                         .skills__container
@@ -86,7 +88,7 @@
                                     input(type="number" min="1" max="100" value=`${one_skill.prosent}` class="input-block skill__input skill__prosent-input")
                                     .prosent__title %                            
                                   .skill__button-edit
-                                    - var button_edit = ['edit' , 'remove']
+                                    - var button_edit = ['pencil' , 'trash']
                                       .button-edit__list
                                         each button in button_edit
                                           .button-edit__iteam
@@ -138,7 +140,7 @@
                             each tag in tags
                               .tags__iteam 
                                 .tags__iteam__title #{tag}
-                                button.tags__iteam__icon x
+                                button.tags__iteam__icon.tags--cross
                     .form-add__button
                       button.button-no-click.form-add--button-no-click Отмена
                       button.button-click.form-add--button-click.add-button Сохранить      
@@ -154,7 +156,7 @@
               .work-iteam__container
                 .block__image-block
                   .block__image
-                    img
+                    img(class="block__image__work-img" src="../images/content/work2.jpg")
                   .block__tags
                     .tags__list
                     - var tags = ['html', 'css' , 'javascript']
@@ -170,14 +172,14 @@
                     .block__button__list
                       - 
                         var buttons = [ 
-                          {'title':'Править' , 'icon' : 'edit'}, 
-                          {'title':'Удалить' , 'icon' : 'remove'},
+                            {'title':'Править' , 'icon' : 'pencil'}, 
+                            {'title':'Удалить' , 'icon' : 'cross'},
                           ]
 
                       each button in buttons
                         .block__button__item
                           .block__button__title #{button.title}                     
-                          .block__button__icon                    
+                          button(class=`block__button__icon--${button.icon}`).block__button__icon                    
 
     section#reviews.reviews
      .reviews__container.container
@@ -189,7 +191,7 @@
             .reviews-edit__file.form
               .file__container
                 .file__icon
-                  img
+                  .file__icon__svg
                 .file__title Добавить фото
                 input.load-file__input
             .reviews-input
@@ -221,24 +223,19 @@
               .work-iteam__container
                 .block__user
                   .user__avatar
-                    img
+                    img(src="../images/content/diva-avatar.jpg")
                   .user__content
                     .user__name Владимир Сабанцев
                     .user__pr Преподаватель                        
                 .block__content
                   .block__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
                   .block__button
-                    .block__button__list
-                        - 
-                          var buttons = [ 
-                            {'title':'Править' , 'icon' : 'edit'}, 
-                            {'title':'Удалить' , 'icon' : 'remove'},
-                            ]
+                    .block__button__list       
 
                         each button in buttons
                           .block__button__item
                             .block__button__title #{button.title}                     
-                            .block__button__icon              
+                            button(class=`block__button__icon--${button.icon}`).block__button__icon            
 </template>
 
 <style  lang="postcss">
@@ -485,21 +482,68 @@ header {
   height: 20px;
 }
 
-.button--good {
+.button--tick {
   width: 15px;
   height: 15px;
   cursor: pointer;
-  background: svg-load("good.svg", fill=#00d70a, width=100%, height=100%);
+  background: svg-load("tick.svg", fill=#00d70a, width=100%, height=100%);
 }
-.button--close {
+.button--cross {
   width: 15px;
   height: 15px;
   cursor: pointer;
-  background: svg-load("close.svg", fill=#bf2929, width=100%, height=100%);
+  background: svg-load("cross.svg", fill=#bf2929, width=100%, height=100%);
+}
+
+.tags--cross {
+  width: 11px;
+  height: 11px;
+  cursor: pointer;
+  background: svg-load("cross.svg", fill=#414c63, width=100%, height=100%);
+}
+
+.button-edit--pencil {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: svg-load("pencil.svg", fill=#a0a5b1, width=100%, height=100%);
+}
+
+.button-edit--trash {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: svg-load("trash.svg", fill=#a0a5b1, width=100%, height=100%);
+}
+
+.block__button__icon--pencil {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: svg-load("pencil.svg", fill=#383bcf, width=100%, height=100%);
+}
+
+.block__button__icon--cross {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: svg-load("cross.svg", fill=#c92e2e, width=100%, height=100%);
+}
+.file__icon__svg {
+   width: 100px;
+  height: 100px;
+
+  background: svg-load("user.svg", fill=#ffffff, width=100%, height=100%);
+
+}
+.skill__item:first-child {
+  margin-top: 0px;
+}
+.skill__item {
+  margin-top: 15px;
 }
 .skill__item__container {
   display: flex;
-  margin-top: 15px;
 }
 .skill__prosent {
   display: flex;
@@ -511,13 +555,22 @@ header {
 }
 .button-edit__list {
   display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  align-items: center;
 }
-
+.button-edit__iteam:first-child {
+  margin-right: 20px;
+}
 .skill__name {
   flex-grow: 1;
 }
 .skill__input {
   width: 100%;
+}
+.skills__container {
+  padding-top: 15px;
 }
 .plashka__new-skill {
   margin-top: 30px;
@@ -630,12 +683,19 @@ header {
   padding-bottom: 5px;
 }
 .tags__iteam__icon {
+  background-repeat: no-repeat;
   margin-left: 0.9375rem;
-  font-size: 20px;
-  font-weight: 700;
   border: none;
-  background: none;
+
   cursor: pointer;
+}
+.block__button__item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.block__button__icon {
+  margin-left: 10px;
 }
 .tags__list {
   display: flex;
@@ -699,11 +759,12 @@ header {
   height: 100%;
 }
 .block__image-block {
-  min-height: 185px;
+  max-height: 185px;
   background: #eee;
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 .block__title {
   font-size: 18px;
@@ -734,7 +795,7 @@ header {
   color: #383bcf;
 }
 .block__button__item:last-child {
-  text-align: right;
+    justify-content: flex-end;
 }
 .block__tags {
   position: absolute;
@@ -755,7 +816,12 @@ header {
   width: 200px;
   background: #dee4ed;
   border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .file__title {
   font-size: 16px;
   color: #383bcf;
@@ -816,6 +882,7 @@ header {
   background: #eee;
   border-radius: 50%;
   margin-right: 20px;
+  overflow: hidden;
 }
 main {
   margin-bottom: 50px;
@@ -841,12 +908,25 @@ main {
 .output__text--mobile {
   display: none;
 }
-.output__link
- {
+.output__link {
   text-decoration: underline;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
 }
+.block__image__work-img {
+}
+.buttons-agree__list {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.buttons-agree__container {
+  height: 100%;
+}
+.button__iteam:first-child {
+  margin-right: 20px;
+}
+/***********Tablet***************************/
 @media screen and (max-width: 992px) {
   .edit__container--work {
     max-width: 500px;
@@ -972,16 +1052,16 @@ main {
     display: block;
   }
   .output--decstope {
-        display: none;
+    display: none;
   }
   .header__container {
-       justify-content: flex-start; 
+    justify-content: flex-start;
   }
 }
 
 @media screen and (max-width: 400px) {
   .logo-name {
-        margin-left: 10px;
+    margin-left: 10px;
   }
   .title__container {
     padding-left: 10px;

@@ -11,3 +11,4 @@ import "./scripts/palallax";
 import "./scripts/skills";
 import "./scripts/works";
 import "./scripts/reviews";
+import "./scripts/form-reviews";
