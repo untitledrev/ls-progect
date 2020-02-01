@@ -1,0 +1,73 @@
+- 
+    var skills__list =  [
+      {
+        'name' : ''
+      },
+      {
+        'name' : 'Front-end',
+          'skills' : [
+            {'name': 'HTML5','prosent' : '10'},
+            {'name': 'CSS3','prosent' : '85'},
+            {'name': 'Javascript','prosent' : '75'},      
+            {'name': 'Jquery','prosent' : '45'}    
+          ]
+        }
+  ]
+section.about#about
+  .about__container.container
+    .title__container
+      h2.h2__title Блок «Обо мне»
+      button.add-gruppe
+        .add-button.add-button--mini
+          .add-button__icon +
+        .add-gruppe__title Добавить группу
+    .about__block-plashka
+      .about__list
+        each skill in skills__list 
+          .about__iteam
+            .plashka__container.plashka__container--new
+              .plashka-title__container
+                .input__container
+                  if skill.name == ''
+                    input(placeholder="Название новой группы").input-block.input-block--skill-block-name
+                  else
+                    input(placeholder="Название новой группы" value=`${skill.name}`).input-block.input-block--skill-block-name
+                  .plashka-title__button
+                    .buttons-agree__container
+                      .buttons-agree__list
+                        -var buttons = ['tick' , 'cross']
+                          each button in buttons                  
+                            .button__iteam
+                              .button__container
+                                button(class=`button--${button}`).button-agree
+
+
+                .plashka__content
+                  if skill.name != ''
+                    .skills__container
+                      .skills__list
+                        each one_skill in skill.skills 
+                          .skill__item
+                            .skill__item__container
+                              .skill__name
+                                input(value=`${one_skill.name}` class="input-block skill__input")
+                              .skill__prosent
+                                input(type="number" min="1" max="100" value=`${one_skill.prosent}` class="input-block skill__input skill__prosent-input")
+                                .prosent__title %                            
+                              .skill__button-edit
+                                - var button_edit = ['pencil' , 'trash']
+                                  .button-edit__list
+                                    each button in button_edit
+                                      .button-edit__iteam
+                                        button(class=`button-edit--${button}`).button-edit
+
+
+                .plashka__new-skill
+                  .new-skill__container
+                    .new-skill
+                      input(placeholder="Название навыка").input-block.input--new-skill
+                    .new-skill-procent
+                      input(placeholder="100 %").input-block.input--new-skill-procent
+                    .new-skill__button
+                      button.add-button.add-button--big
+                        .add-button__icon +

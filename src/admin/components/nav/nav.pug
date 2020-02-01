@@ -1,0 +1,16 @@
+nav.nav#nav
+  .container.nav__container
+    - 
+      var menys = [
+        {'name':'Обо мне','url':'/'},
+        {'name':'Работы','url':'works'},
+        {'name':'Отзывы','url':'reviews'}     
+      ]
+    ul.nav__list
+      each meny, index in menys
+        if index == 0
+          - var active = 'active'
+        else
+          - var active = ''  
+        li().nav__item
+          router-link(to=`${meny.url}`).nav__item-list #{meny.name} 

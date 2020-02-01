@@ -1,246 +1,26 @@
 <template lang="pug">
   main#main.main
-
-    - 
-      var skills__list =  [
-          {
-            'name' : ''
-          },
-          {
-            'name' : 'Front-end',
-              'skills' : [
-                {'name': 'HTML5','prosent' : '10'},
-                {'name': 'CSS3','prosent' : '85'},
-                {'name': 'Javascript','prosent' : '75'},      
-                {'name': 'Jquery','prosent' : '45'}    
-              ]
-            }
-        ]
-    header.header
-      .container.header__container
-        .logo-name
-          .logo-name__container
-            .logo-name__avatar
-              .user__avatar
-                img(src="../images/content/photo__my.jpg")
-            .logo-name__title
-              .logo-name__title__text Ивашов Иван
-              .output__text.output__text--mobile
-                a(href="#auto").output__link Выйти              
-              
-        .name-panel
-          .name-panel__container
-            .name-panel__text Панель администрирования
-        .output.output--decstope
-          .output__container
-            .output__text 
-              a(href="#auto").output__link Выйти
-    nav.nav#nav
-      .container.nav__container
-        - var menys = ['Обо мне','Работы','Отзывы']
-        ul.nav__list
-          each meny, index in menys
-            if index == 0
-              - var active = 'active'
-            else
-              - var active = ''  
-            li().nav__item
-              a(href="#" class=`${active}`).nav__item-list #{meny}
-    section.about#about
-      .about__container.container
-        .title__container
-          h2.h2__title Блок «Обо мне»
-          button.add-gruppe
-            .add-button.add-button--mini
-              .add-button__icon +
-            .add-gruppe__title Добавить группу
-        .about__block-plashka
-          .about__list
-            each skill in skills__list 
-              .about__iteam
-                .plashka__container.plashka__container--new
-                  .plashka-title__container
-                    .input__container
-                      if skill.name == ''
-                        input(placeholder="Название новой группы").input-block.input-block--skill-block-name
-                      else
-                        input(placeholder="Название новой группы" value=`${skill.name}`).input-block.input-block--skill-block-name
-                      .plashka-title__button
-                        .buttons-agree__container
-                          .buttons-agree__list
-                            -var buttons = ['tick' , 'cross']
-                              each button in buttons                  
-                                .button__iteam
-                                  .button__container
-                                    button(class=`button--${button}`).button-agree
-                                      
-                                                             
-                    .plashka__content
-                       if skill.name != ''
-                        .skills__container
-                          .skills__list
-                            each one_skill in skill.skills 
-                              .skill__item
-                                .skill__item__container
-                                  .skill__name
-                                    input(value=`${one_skill.name}` class="input-block skill__input")
-                                  .skill__prosent
-                                    input(type="number" min="1" max="100" value=`${one_skill.prosent}` class="input-block skill__input skill__prosent-input")
-                                    .prosent__title %                            
-                                  .skill__button-edit
-                                    - var button_edit = ['pencil' , 'trash']
-                                      .button-edit__list
-                                        each button in button_edit
-                                          .button-edit__iteam
-                                            button(class=`button-edit--${button}`).button-edit
-
-
-                    .plashka__new-skill
-                      .new-skill__container
-                        .new-skill
-                          input(placeholder="Название навыка").input-block.input--new-skill
-                        .new-skill-procent
-                          input(placeholder="100 %").input-block.input--new-skill-procent
-                        .new-skill__button
-                          button.add-button.add-button--big
-                            .add-button__icon +
-    section#works.works
-      .works__container.container
-        .title__container
-          h2.h2__title Блок «Работы»
-        section.work-edit.edit-block__container#work-edit
-          .edit-block.edit-block--work  Редактирование работы
-          .edit__container.edit__container--work
-            .load-file__block
-              .load-file__container
-                form.load-file__form
-                  .load-file__title Перетащите или загрузите для загрузки изображения
-                  input.load-file__input
-                  button.button-click.add-button Загрузить
-            .form-add-work__block
-              .form-add-work__container
-                .form-add-work__list
-                  - var formDate = ['Название' , 'Ссылка']
-                    each input , index in formDate
-                      .form-add__item
-                        label(for=`label${index}` class="form-label") #{input}
-                        .input-block__form-add
-                          input(placeholder="" id=`label${index}`).input-block.input--form-add
-                    .form-add__item
-                        label(for=`label3` class="form-label") Описание
-                        .input-block__form-add
-                          textarea.textarea-block.textarea--form-add
-                    .form-add__item
-                        label(for="label4" class="form-label") Добавление тэга
-                        .input-block__form-add
-                          input(placeholder="" id="label4").input-block.input--form-add
-                        .tags__contener
-                          .tags__list
-                            - var tags = ['html', 'css' , 'javascript']
-                            each tag in tags
-                              .tags__iteam 
-                                .tags__iteam__title #{tag}
-                                button.tags__iteam__icon.tags--cross
-                    .form-add__button
-                      button.button-no-click.form-add--button-no-click Отмена
-                      button.button-click.form-add--button-click.add-button Сохранить      
-        section.works-list#works-list
-          .works-list__container
-            .work-iteam.work-iteam--button
-              .block-iteam__container
-                .block-add-button__block
-                  .block-add-button__container
-                    button.block-add-button +
-                    .block-add-title Добавить работу
-            .work-iteam
-              .work-iteam__container
-                .block__image-block
-                  .block__image
-                    img(class="block__image__work-img" src="../images/content/work2.jpg")
-                  .block__tags
-                    .tags__list
-                    - var tags = ['html', 'css' , 'javascript']
-                    each tag in tags
-                      .tags__iteam.tags--works 
-                        .tags__iteam__title #{tag}                  
-                .block__content
-                  .block__title Сайт школы образования
-                  .block__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                  .block__link
-                    a(href="" class="block__link__text") http://loftschool.ru
-                  .block__button
-                    .block__button__list
-                      - 
-                        var buttons = [ 
-                            {'title':'Править' , 'icon' : 'pencil'}, 
-                            {'title':'Удалить' , 'icon' : 'cross'},
-                          ]
-
-                      each button in buttons
-                        .block__button__item
-                          .block__button__title #{button.title}                     
-                          button(class=`block__button__icon--${button.icon}`).block__button__icon                    
-
-    section#reviews.reviews
-     .reviews__container.container
-        .title__container     
-          h2.h2__title  Блок «Отзывы»
-        section.reviews-edit.edit-block__container#reviews-edit
-          .edit-block Новый отзыв
-          .edit__container.reviews-edit__block          
-            .reviews-edit__file.form
-              .file__container
-                .file__icon
-                  .file__icon__svg
-                .file__title Добавить фото
-                input.load-file__input
-            .reviews-input
-
-                    .reviews-input__block
-                      - var formDate = ['Имя автора' , 'Титал автора']
-                        each input , index in formDate
-                          .form-add__item.reviews--input
-                            label(for=`label${index}` class="form-label") #{input}
-                            .input-block__form-add
-                              input(placeholder="" id=`label${index}`).input-block.input--form-add
-                        
-                    .form-add__item
-                        label(for=`label3` class="form-label") Отзывы
-                        .input-block__form-add
-                          textarea.textarea-block.textarea--form--add.reviews--textarea
-                    .form-add__button
-                      button.button-no-click.form-add--button-no-click Отмена
-                      button.button-click.form-add--button-click.add-button Сохранить                
-        section.reviews-list#reviews-list
-          .reviews-list__container
-            .work-iteam.review-iteam--button
-              .block-iteam__container
-                .block-add-button__block
-                  .block-add-button__container.block-add-button__container--reviews
-                    button.block-add-button +
-                    .block-add-title Добавить Отзыв
-            .work-iteam.review-iteam
-              .work-iteam__container
-                .block__user
-                  .user__avatar
-                    img(src="../images/content/diva-avatar.jpg")
-                  .user__content
-                    .user__name Владимир Сабанцев
-                    .user__pr Преподаватель                        
-                .block__content
-                  .block__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-                  .block__button
-                    .block__button__list       
-
-                        each button in buttons
-                          .block__button__item
-                            .block__button__title #{button.title}                     
-                            button(class=`block__button__icon--${button.icon}`).block__button__icon            
+    vc-header
+    vc-nav
+    router-view
 </template>
 
+<script>
+import Header from "./components/header/header";
+import Nav from "./components/nav/nav";
+
+export default {
+  components: {
+    vcHeader: Header,
+    vcNav: Nav
+  }
+}
+
+</script>
+
+
+
 <style  lang="postcss">
-
-
 .header__container {
   display: flex;
   color: #fff;
@@ -285,7 +65,7 @@
     color: #414c63;
     border-bottom: 3px solid #fff;
     display: block;
-    &.active,
+    &.router-link-exact-active,
     &:hover {
       border-bottom: 3px solid #383bcf;
       & .nav__item-list {
@@ -435,11 +215,10 @@
   background: svg-load("cross.svg", fill=#c92e2e, width=100%, height=100%);
 }
 .file__icon__svg {
-   width: 100px;
+  width: 100px;
   height: 100px;
 
   background: svg-load("user.svg", fill=#ffffff, width=100%, height=100%);
-
 }
 .skill__item:first-child {
   margin-top: 0px;
@@ -700,7 +479,7 @@
   color: #383bcf;
 }
 .block__button__item:last-child {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 .block__tags {
   position: absolute;
@@ -990,3 +769,5 @@ main {
   }
 }
 </style>
+
+<style lang="postcss" src="./styles/main.pcss"></style>
