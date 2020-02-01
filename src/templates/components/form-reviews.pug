@@ -1,27 +1,43 @@
 script(type='text/x-template')#form-review
-    form.form
+    form.form(@submit.prevent="submitForm" name="review")#form-review-block
       .form__item-one__container
-        .form__item                        
+        .form__item(v-bind:class="{ 'form__item--error': validation.hasError('name') }" )                        
           .form__item__icon 
             .form__item__icon__container
               +icon('avatar','form__item__icon_avator')      
-          .form__item__container
-            label.form__item__title(for=`inputavatar`) Введите ваше имя
-            input(class="form__item_input" id=`inputavatar` placeholder="Ковальчук Дмитрий")
+          .form__item__container(v-bind:class="{ 'form__item--error': validation.hasError('name') }")
+            label.form__item__title(for=`inputavatar` ) Введите ваше имя
+            input(
+              
+              v-model="name" 
+              id="input__name" 
+              name="name" 
+              class="form__item_input"  
+              placeholder="Ковальчук Дмитрий"
+              )
+            .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('name') }")
+              .erorr___container
+                .erorr___container__text {{ validation.firstError('name') }}
       .form__item-one__container
-        .form__item                        
+        .form__item(v-bind:class="{ 'form__item--error': validation.hasError('email') }" )                                   
           .form__item__icon 
             .form__item__icon__container
               +icon('envelope','form__item__icon_avator')      
           .form__item__container
             label.form__item__title(for=`inputenvelope`) Введите ваш email
-            input(class="form__item_input" id=`inputenvelope` placeholder="loftschool@study.com")
-      .form__item.form__item__textarea--width   
+            input(v-model="email" name="email"   id="input__email"  class="form__item_input" placeholder="loftschool@study.com")
+            .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('email') }")
+              .erorr___container
+                .erorr___container__text {{ validation.firstError('email') }}      
+      .form__item(v-bind:class="{ 'form__item--error': validation.hasError('text') }" ).form__item__textarea--width   
         .form__item__icon 
           .form__item__icon__container
             +icon('chat','form__item__icon_avator')      
         .form__item__container
           label.form__item__title(for=`textareachat`) Сообщение к письму
-          textarea(id='textareachat' class="form__item_input form__item__textarea" placeholder="Требуется ваша помощь в создании сайта. \nИнтересуют сроки и цена вопроса")
+          textarea(v-model="text" name="text"    id='input__text' class="form__item_input form__item__textarea" placeholder="Требуется ваша помощь в создании сайта. \nИнтересуют сроки и цена вопроса")
+          .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('text') }")
+            .erorr___container
+              .erorr___container__text {{ validation.firstError('text') }}     
       .form__button__container
-        button.form__button Отправить
+        button.form__button Отправить 

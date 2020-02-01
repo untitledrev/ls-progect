@@ -1,3 +1,5 @@
+import "./styles/main.pcss";
+
 import Vue from 'vue';
 import App from './App.vue';
 import SimpleVueValidator from 'simple-vue-validator';
