@@ -36,7 +36,7 @@ new Vue({
 
 
 
-module.exports = {
+Works.exports = {
   data: function () {
     return {
       name: ''
