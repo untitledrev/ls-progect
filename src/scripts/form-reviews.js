@@ -32,7 +32,8 @@ new Vue({
             let formData = new FormData(document.forms.review);
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "*");
-            xhr.send(formData);          
+            xhr.send(formData);     
+            console.log(formData);     
             xhr.onload = () =>  console.log(xhr.response);
 
           

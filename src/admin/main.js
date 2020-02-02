@@ -35,7 +35,7 @@ new Vue({
 
 
 
-
+/*
 Works.exports = {
   data: function () {
     return {
@@ -59,7 +59,7 @@ Works.exports = {
   }
 }
 
-
+*/
 
 
 console.log('work-admin');

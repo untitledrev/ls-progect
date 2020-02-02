@@ -14,8 +14,7 @@ export default {
     vcHeader: Header,
     vcNav: Nav
   }
-}
-
+};
 </script>
 
 
@@ -352,6 +351,7 @@ export default {
   border: 1px solid #d9dbe0;
   padding: 20px;
   margin-top: 20px;
+  resize: none;
 }
 .tags__iteam {
   font-size: 13px;
@@ -528,6 +528,7 @@ export default {
 }
 .reviews--textarea {
   min-height: 115px;
+  resize: none;
 }
 .reviews-list__container {
   display: flex;
@@ -713,7 +714,7 @@ main {
   }
   .work-iteam--button,
   .review-iteam--button {
-    max-width: none;
+   
   }
   .file__icon {
     margin: 0 auto;
