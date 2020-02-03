@@ -718,7 +718,7 @@ main {
   }
   .file__icon {
     margin: 0 auto;
-    
+        margin-top: 10px;
   }
   .reviews-input {
     margin-top: 50px;
