@@ -1,0 +1,44 @@
+section#login.login
+  .login__contener
+    .form__contener
+      .form__close.button--login
+      .form__bock
+        form.form.form--login(@submit.prevent="submitForm" name="login")#form-login-block
+          h2.form__h2 Авторизация
+          .form__item-one__container
+            .form__item(v-bind:class="{ 'form__item--error': validation.hasError('name') }" )                        
+              .form__item__icon 
+                .form__item__icon__container
+                  .icon__svg.icon--name           
+              .form__item__container(v-bind:class="{ 'form__item--error': validation.hasError('name') }")
+                label.form__item__title(for=`inputavatar` ) Логин
+                input(
+                  v-model="name" 
+                  id="input__name" 
+                  name="name" 
+                  class="form__item_input"  
+                  placeholder="Логин"
+                  )
+                .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('name') }")
+                  .erorr___container
+                    .erorr___container__text {{ validation.firstError('name') }}
+          .form__item-one__container
+            .form__item(v-bind:class="{ 'form__item--error': validation.hasError('email') }" )                                   
+              .form__item__icon 
+                .form__item__icon__container
+                  .icon__svg.icon--password                  
+              .form__item__container
+                label.form__item__title(for=`inputenvelope`) Пароль
+                input(
+                  v-model="password" 
+                  name="password" 
+                  id="input__password" 
+                  class="form__item_input"
+                  type="password"
+                  placeholder="Пароль"                 
+                  )
+                .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('password') }")
+                  .erorr___container
+                    .erorr___container__text {{ validation.firstError('password') }}
+          .form__button__container
+            button.form__button Отправить

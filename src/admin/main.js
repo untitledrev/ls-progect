@@ -6,15 +6,17 @@ import SimpleVueValidator from 'simple-vue-validator';
 import About from './pages/about/about';
 import Works from './pages/works/works';
 import Reviews from './pages/reviews/reviews';
+
+
 const Validator = SimpleVueValidator.Validator;
 
 
-const router = new VueRouter(  {
-routes: [
-  { path: '/' , component : About},
-  { path: '/works' , component : Works},
-  { path: '/reviews' , component : Reviews}
-]
+const router = new VueRouter({
+  routes: [
+    { path: '/', component: About },
+    { path: '/works', component: Works },
+    { path: '/reviews', component: Reviews }
+  ]
 });
 
 Vue.use(VueRouter);
@@ -24,10 +26,7 @@ new Vue({
 
   router,
   el: "#app-root",
-  render: h => h(App) 
-
- 
- 
+  render: h => h(App)
 
 });
 

@@ -3,16 +3,21 @@
     vc-header
     vc-nav
     router-view
+    vc-login
 </template>
 
 <script>
+
+import Login from './pages/login/login';
 import Header from "./components/header/header";
 import Nav from "./components/nav/nav";
+
 
 export default {
   components: {
     vcHeader: Header,
-    vcNav: Nav
+    vcNav: Nav,
+    vcLogin: Login
   }
 };
 </script>
