@@ -1,3 +1,6 @@
+import showErrorTooltip from '@/helpers/showErrorTooltip.js';
+
+
 export default {
   namespaced: true,
   state: {
@@ -10,7 +13,7 @@ export default {
       state.categories = state.categories.filter(category => {
         return category.id != deletedCategory.id;
       });
-    }, 
+    },
     ADD_SKILL: (state, newSkill) => {
       state.categories = state.categories.map(category => {
         if (category.id == newSkill.category) {
@@ -56,18 +59,29 @@ export default {
       try {
         const { data } = await this.$axios.post("/categories", { title });
         commit("ADD_CATEGORY", data);
+        commit('tooltip/SHOW_TOOLTIP', { type: 'success', message: 'Категория успешно добавленна' }, { root: true });
       } catch (error) {
-        throw new Error(
-          error.response.data.error || error.response.data.message
-        );
+        showErrorTooltip(context, error);
       }
     },
     async removeCategory({ commit }, category) {
-      const { data } = await this.$axios.delete(`/categories/${category.id}`);
-      commit("REMOVE_CATEGOR", category);
+      try {
+        const { data } = await this.$axios.delete(`/categories/${category.id}`);
+        commit("REMOVE_CATEGOR", category);
+        commit('tooltip/SHOW_TOOLTIP', { type: 'success', message: 'Категория успешно удалена' }, { root: true })  
+      } catch (error) {
+        showErrorTooltip(context, error);
+      }
+
     },
-    async editCategory({ commit }, editCategory) {    
-      const { data } = await this.$axios.post(`/categories/${editCategory.id}`, { title: editCategory.category });
+    async editCategory({ commit }, editCategory) {
+      try {
+        const { data } = await this.$axios.post(`/categories/${editCategory.id}`, { title: editCategory.category });
+        commit('tooltip/SHOW_TOOLTIP', { type: 'success', message: 'Категория успешно обновлена' }, { root: true });       
+      } catch (error) {
+        showErrorTooltip(context, error);
+      }
+
     },
 
     /* Получение всех категорий */
@@ -78,7 +92,8 @@ export default {
 
       }
       catch (error) {
-
+        
+        throw new Error(error.response.data.error || error.response.data.message);
       }
 
     }

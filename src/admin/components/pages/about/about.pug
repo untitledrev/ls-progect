@@ -8,31 +8,34 @@ section.about#about
         .add-gruppe__title Добавить группу
     .about__block-plashka
       .about__list 
-          .about__iteam(v-if="newcatagory == true")
-            .plashka__container.plashka__container--new
-              .plashka-title__container
-                form().input__container
-                  input(placeholder="Название новой группы" v-model="title").input-block.input-block--skill-block-name
-                  .plashka-title__button
-                    .buttons-agree__container
-                      .buttons-agree__list            
-                            .button__iteam
-                              .button__container
-                                button(class=`button--tick` @click="addNewCategory").button-agree
-                            .button__iteam
-                              .button__container
-                                button(class=`button--cross` @click="newcatagory = false").button-agree                                
-                .plashka__content
-                .plashka__new-skill.blocked
-                  .new-skill__container
-                    .new-skill
-                      input(placeholder="Название навыка").input-block.input--new-skill
-                    .new-skill-procent
-                      input(placeholder="100 %").input-block.input--new-skill-procent
-                    .new-skill__button
-                      button.add-button.add-button--big
-                        .add-button__icon +
-          .about__iteam(v-for="category in categories" :key="category.id")
-            skill-group(
-              :category="category"
-            )
+        .about__iteam(v-if="newcatagory == true")
+          .plashka__container.plashka__container--new
+            .plashka-title__container
+              form().input__container
+                input(placeholder="Название новой группы" v-model="title").input-block.input-block--skill-block-name
+                .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('title') }")
+                  .erorr___container
+                    .erorr___container__text {{ validation.firstError('title') }}                 
+                .plashka-title__button
+                  .buttons-agree__container
+                    .buttons-agree__list            
+                      .button__iteam
+                        .button__container
+                          button(class=`button--tick` @click="addNewCategory").button-agree
+                      .button__iteam
+                        .button__container
+                          button(class=`button--cross` @click="newcatagory = false").button-agree                                
+              .plashka__content
+              .plashka__new-skill.blocked
+                .new-skill__container
+                  .new-skill
+                    input(placeholder="Название навыка").input-block.input--new-skill
+                  .new-skill-procent
+                    input(placeholder="100 %").input-block.input--new-skill-procent
+                  .new-skill__button
+                    button.add-button.add-button--big
+                      .add-button__icon +
+        .about__iteam(v-for="category in categories" :key="category.id")
+          skill-group(
+            :category="category"
+          )

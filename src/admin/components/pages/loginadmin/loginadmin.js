@@ -1,7 +1,7 @@
 import simpleVueValidator from 'simple-vue-validator';
 import $axios from '@/requests';
 
-import { mapActions} from 'vuex';
+import { mapActions } from 'vuex';
 const { Validator } = simpleVueValidator;
 
 export default {
@@ -13,7 +13,9 @@ export default {
     },
     error: ''
   }),
-
+  components: {
+    vcTooltip: () => import('components/tooltip/tooltip.vue'),
+  },
   validators: {
 
     'user.name': function (value) {
@@ -24,18 +26,18 @@ export default {
     }
   },
   methods: {
-    async login() { 
+    ...mapActions('tooltip', ['showTooltip']),   
+    async login() {
       if (await this.$validate()) {
         try {
           const response = await $axios.post("/login", this.user);
           const token = response.data.token;
-          localStorage.setItem("token",token);
-          $axios.defaults.headers['Authorization'] =  `Bearer ${token}`;
+          localStorage.setItem("token", token);
+          $axios.defaults.headers['Authorization'] = `Bearer ${token}`;
           this.$router.replace("/");
           console.log(response);
-        }
-        catch (error) {
-
+        } catch ({ message }) {
+          this.showTooltip({ message, type: 'error' });
         }
       }
       /*

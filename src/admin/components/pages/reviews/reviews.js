@@ -1,10 +1,14 @@
 import { mapActions, mapState } from "vuex";
+import simpleVueValidator from "simple-vue-validator";
+const { Validator } = simpleVueValidator;
 export default {
+  mixins: [simpleVueValidator.mixin],
   data() {
     return {
       loading: false,
       editReviews: false,
       renderedPhoto: "",
+      sizePhoto: "",
       review: {
         photo: '',
         author: '',
@@ -14,6 +18,27 @@ export default {
       newReview: { ...this.review }
     };
   },
+
+  validators: {
+    "newReview.author": function (value) {
+      return Validator.value(value)
+        .required("Введите имя автора");
+    },
+    "newReview.occ": function (value) {
+      return Validator.value(value)
+        .required("Введите титул автора");
+    },
+    "newReview.text": function (value) {
+      return Validator.value(value)
+        .required("Введите текст отзыва");
+    },
+    "renderedPhoto": function (value) {
+      return Validator.value(value)
+        .required("Загрузите аватар");
+    }
+
+  },
+
   components: {
     reviewIteam: () => import("components/review-iteam/review-iteam.vue")
   },
@@ -28,47 +53,68 @@ export default {
 
   methods: {
     ...mapActions("review", ["addReview", "fetchReview", "updateReview"]),
+    ResetFormReview() {
+      this.editReviews = false;
+      this.review = {};
+      this.review.author = '';
+      this.review.occ = '';
+      this.review.text = '';
+
+      this.newReview = { ...this.review };
+
+      this.renderedPhoto = '';
+      this.validation.reset();
+    },
+
     handleFile(e) {
       const file = e.target.files[0];
       this.newReview.photo = file;
       this.renderImageFile(file);
     },
-    ResetForm() {
-      this.editReviews = false;
-      this.review = {};
-      this.renderedPhoto = '';
-    },
     async newAddReviews(reviewThis) {
-      this.loading = true;
-      try {
+      if (await this.$validate()) {
+        this.loading = true;
+        try {
 
-        const isChanged = Object.keys(this.newReview).some(key => {
-          return this.newReview[key] !== this.review[key];
-        });
+          const isChanged = Object.keys(this.newReview).some(key => {
+            return this.newReview[key] !== this.review[key];
+          });
 
 
 
 
-        if (isChanged) {
-          reviewThis.id ? await this.updateReview(reviewThis) : await this.addReview(reviewThis);
+          if (isChanged) {
+            reviewThis.id ? await this.updateReview(reviewThis) : await this.addReview(reviewThis);
+          }
+
+
+        } catch (error) {
+
+        } finally {
+          this.loading = false;
+
           this.editReviews = false;
+
+          this.newReview.author = '';
+          this.newReview.occ = '';
+          this.newReview.text = '';
+          this.renderedPhoto = '';
+
+          this.validation.reset();
+
         }
-
-        this.review = {};
-        this.renderedPhoto = '';
-      } catch (error) {
-
-      } finally {
-        this.loading = false;
       }
-
     },
     renderImageFile(file) {
       const reader = new FileReader();
       try {
+        console.log(file);
+
         reader.readAsDataURL(file);
         reader.onloadend = () => {
           this.renderedPhoto = reader.result;
+          this.sizePhoto = file.size;
+
         };
       } catch (error) {
         throw new Errow("Ошибка при чтении файла");
@@ -77,8 +123,11 @@ export default {
 
     editReview(review) {
       this.review = review;
+      this.newReview = { ...this.review };
       this.editReviews = true;
-
+      if (this.review.photo) {
+        this.renderedPhoto = 'https://webdev-api.loftschool.com/' + this.review.photo;
+      }
     }
 
   },
@@ -92,9 +141,8 @@ export default {
   },
   watch: {
     review() {
-      console.log(this.newReview);
       this.newReview = { ...this.review };
-      console.log(this.newReview);
+
       if (this.review.photo) {
         this.renderedPhoto = 'https://webdev-api.loftschool.com/' + this.review.photo;
 

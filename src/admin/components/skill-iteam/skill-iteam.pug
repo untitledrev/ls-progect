@@ -13,16 +13,21 @@
 .skill__item__container(v-else)
   .skill__name
     input(v-model="editedSkill.title" class="input-block skill__input")
+    .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('editedSkill.title') }")
+      .erorr___container
+        .erorr___container__text {{ validation.firstError('editedSkill.title') }}      
   .skill__prosent
-    input(v-model="editedSkill.percent"  type="number" min="1" max="100" class="input-block skill__input skill__prosent-input")
-                       
+    input(v-model="editedSkill.percent" type="number" min="1" max="100" class="input-block skill__input skill__prosent-input")
+    .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('editedSkill.percent') }")
+      .erorr___container.left
+        .erorr___container__text {{ validation.firstError('editedSkill.percent') }}  
   .skill__button-edit
     .button-edit__list
-        .buttons-agree__container
-          .buttons-agree__list             
-                .button__iteam
-                  .button__container
-                    button(@click="editExistedSkill" class=`button--tick`).button-agree
-                .button__iteam
-                  .button__container
-                    button(class=`button--cross`  @click="editmode = false").button-agree                    
+      .buttons-agree__container
+        .buttons-agree__list             
+          .button__iteam
+            .button__container
+              button(@click="editExistedSkill" class=`button--tick`).button-agree
+          .button__iteam
+            .button__container
+              button(class=`button--cross`  @click="editmode = false").button-agree                    

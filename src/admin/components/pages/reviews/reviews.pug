@@ -12,7 +12,10 @@ section#reviews.reviews
               :style="renderedBackground"
               )  
               input(type="file" @change="handleFile").reviews__form-file-input       
-              .file__icon__svg()
+              .file__icon__svg()            
+            .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('renderedPhoto') }")
+              .erorr___container
+                .erorr___container__text {{ validation.firstError('renderedPhoto') }}                 
             .file__title Добавить фото
 
         .reviews-input
@@ -21,16 +24,25 @@ section#reviews.reviews
               label(for=`label1` class="form-label") Имя автора
               .input-block__form-add
                 input(placeholder="" id=`label1` type="text" v-model="newReview.author").input-block.input--form-add
+                .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('newReview.author') }")
+                  .erorr___container
+                    .erorr___container__text {{ validation.firstError('newReview.author') }}                     
             .form-add__item.reviews--input
               label(for=`label2` class="form-label") Титул автора
               .input-block__form-add
-                input(placeholder="" id=`label2` type="text" v-model="newReview.occ").input-block.input--form-add                   
+                input(placeholder="" id=`label2` type="text" v-model="newReview.occ").input-block.input--form-add   
+                .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('newReview.occ') }")
+                  .erorr___container
+                    .erorr___container__text {{ validation.firstError('newReview.occ') }}                                   
           .form-add__item
             label(for=`label3` class="form-label") Отзывы
             .input-block__form-add
               textarea(v-model="newReview.text").textarea-block.textarea--form--add.reviews--textarea
+              .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('newReview.text') }")
+                .erorr___container
+                  .erorr___container__text {{ validation.firstError('newReview.text') }}                     
           .form-add__button
-            button.button-no-click.form-add--button-no-click(@click="ResetForm" type="reset") Отмена
+            button.button-no-click.form-add--button-no-click(@click="ResetFormReview" type="reset") Отмена
             button(type="submit" :disabled="loading").button-click.form-add--button-click.add-button Сохранить                
     section.reviews-list#reviews-list
       .reviews-list__container

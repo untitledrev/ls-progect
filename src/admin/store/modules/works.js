@@ -1,3 +1,4 @@
+import showErrorTooltip from '@/helpers/showErrorTooltip.js';
 export default {
   namespaced: true,
   state: {
@@ -35,11 +36,9 @@ export default {
 
         const { data } = await this.$axios.post("/works", formData);
         commit("ADD_WORK", data);
-
+        commit('tooltip/SHOW_TOOLTIP', { type: 'success', message: 'Работа успешно добавлена' }, { root: true });
       } catch (error) {
-        throw new Error(
-          error.response.data.error || error.response.data.message
-        );
+        showErrorTooltip(context, error);
       }
 
     },
@@ -53,9 +52,9 @@ export default {
         });
         const { data } = await this.$axios.post(`/works/${work.id}`, formData);
         commit('UPDATE_WORK', data);
-
+        commit('tooltip/SHOW_TOOLTIP', { type: 'success', message: 'Работа успешно изменина' }, { root: true });
       } catch (error) {
-
+        showErrorTooltip(context, error);
       }
     },
     async fetchWork({ commit }) {
@@ -65,7 +64,7 @@ export default {
 
       }
       catch (error) {
-
+        throw new Error(error.response.data.error || error.response.data.message);
       }
 
     },
@@ -73,8 +72,9 @@ export default {
       try {
         const { data } = await this.$axios.delete(`/works/${work.id}`);
         commit("REMOVE_WORK", work);
+        commit('tooltip/SHOW_TOOLTIP', { type: 'success', message: 'Работа успешно удалена' }, { root: true });
       } catch (error) {
-
+        showErrorTooltip(context, error);
       }
 
     }

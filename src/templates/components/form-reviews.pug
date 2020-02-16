@@ -1,43 +1,43 @@
 script(type='text/x-template')#form-review
-    form.form(@submit.prevent="submitForm" name="review")#form-review-block
+    form.form(@submit.prevent="formMessage" name="review")#form-review-block
       .form__item-one__container
-        .form__item(v-bind:class="{ 'form__item--error': validation.hasError('name') }" )                        
+        .form__item(v-bind:class="{ 'form__item--error': validation.hasError('massega.name') }" )                        
           .form__item__icon 
             .form__item__icon__container
               +icon('avatar','form__item__icon_avator')      
-          .form__item__container(v-bind:class="{ 'form__item--error': validation.hasError('name') }")
+          .form__item__container(v-bind:class="{ 'form__item--error': validation.hasError('massega.name') }")
             label.form__item__title(for=`inputavatar` ) Введите ваше имя
             input(
               
-              v-model="name" 
+              v-model="massega.name" 
               id="input__name" 
-              name="name" 
+              name="massega.name" 
               class="form__item_input"  
               placeholder="Ковальчук Дмитрий"
               )
-            .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('name') }")
+            .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('massega.name') }")
               .erorr___container
-                .erorr___container__text {{ validation.firstError('name') }}
+                .erorr___container__text {{ validation.firstError('massega.name') }}
       .form__item-one__container
-        .form__item(v-bind:class="{ 'form__item--error': validation.hasError('email') }" )                                   
+        .form__item(v-bind:class="{ 'form__item--error': validation.hasError('massega.email') }" )                                   
           .form__item__icon 
             .form__item__icon__container
               +icon('envelope','form__item__icon_avator')      
           .form__item__container
             label.form__item__title(for=`inputenvelope`) Введите ваш email
-            input(v-model="email" name="email"   id="input__email"  class="form__item_input" placeholder="loftschool@study.com")
-            .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('email') }")
+            input(v-model="massega.email" name="massega.email"   id="input__email"  class="form__item_input" placeholder="loftschool@study.com")
+            .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('massega.email') }")
               .erorr___container
-                .erorr___container__text {{ validation.firstError('email') }}      
-      .form__item(v-bind:class="{ 'form__item--error': validation.hasError('text') }" ).form__item__textarea--width   
+                .erorr___container__text {{ validation.firstError('massega.email') }}      
+      .form__item(v-bind:class="{ 'form__item--error': validation.hasError('massega.text') }" ).form__item__textarea--width   
         .form__item__icon 
           .form__item__icon__container
             +icon('chat','form__item__icon_avator')      
         .form__item__container
           label.form__item__title(for=`textareachat`) Сообщение к письму
-          textarea(v-model="text" name="text"    id='input__text' class="form__item_input form__item__textarea" placeholder="Требуется ваша помощь в создании сайта. \nИнтересуют сроки и цена вопроса")
-          .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('text') }")
+          textarea(v-model="massega.text" name="massega.text"    id='input__text' class="form__item_input form__item__textarea" placeholder="Требуется ваша помощь в создании сайта. \nИнтересуют сроки и цена вопроса")
+          .input-tooltip(v-bind:class="{ 'input-tooltip--showed': validation.hasError('massega.text') }")
             .erorr___container
-              .erorr___container__text {{ validation.firstError('text') }}     
+              .erorr___container__text {{ validation.firstError('massega.text') }}     
       .form__button__container
         button.form__button Отправить 

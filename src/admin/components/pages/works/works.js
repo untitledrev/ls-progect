@@ -1,5 +1,8 @@
 import { mapActions, mapState } from "vuex";
+import simpleVueValidator from "simple-vue-validator";
+const { Validator } = simpleVueValidator;
 export default {
+  mixins: [simpleVueValidator.mixin],
   data() {
     return {
       tags: [],
@@ -16,6 +19,30 @@ export default {
       newWork: { ...this.work }
     };
   },
+  validators: {
+    "newWork.title": function (value) {
+      return Validator.value(value)
+        .required("Введите Название");
+    },
+    "newWork.link": function (value) {
+      return Validator.value(value)
+        .required("Введите ссылку");
+    },
+    "newWork.description": function (value) {
+      return Validator.value(value)
+        .required("Введите Описание");
+    },
+    "newWork.techs": function (value) {
+      return Validator.value(value)
+        .required("Введите Тэги");
+    },
+    "renderedPhoto": function (value) {
+      return Validator.value(value)
+        .required("Введите фото");
+    }
+
+  },
+
   components: {
     workIteam: () => import("components/work-iteam/work-iteam.vue")
   },
@@ -30,7 +57,27 @@ export default {
   },
   methods: {
     ...mapActions("works", ["newAddWork", "fetchWork", "updateWork"]),
-  
+
+    ResetForm() {
+
+
+      this.renderedPhoto = '';
+      this.tags = [];
+      this.editWork = false;
+
+      this.work = {};
+      this.work.title = '';
+      this.work.link = '';
+      this.work.description = '';
+      this.work.techs = '';
+
+      this.newWork = { ...this.work };
+
+      this.validation.reset();
+
+
+    },
+
     handleFile(e) {
       const file = e.target.files[0];
       this.newWork.photo = file;
@@ -41,28 +88,40 @@ export default {
       this.newWork.techs = this.tags.join(', ');
     },
     async newExengeAddWork(workThis) {
+      if (await this.$validate()) {
+        this.loading = true;
+        try {
+          const isChanged = Object.keys(this.newWork).some(key => {
+            return this.newWork[key] !== this.work[key];
+          });
 
-      this.loading = true;
-      try {
-        const isChanged = Object.keys(this.newWork).some(key => {
-          return this.newWork[key] !== this.work[key];
-        });
+          if (isChanged) {
+            workThis.id ? await this.updateWork(workThis) : await this.newAddWork(workThis);
+            this.editWork = false;
+          }
 
-        if (isChanged) {
-          workThis.id ? await this.updateWork(workThis) : await this.newAddWork(workThis);
+
+        } catch (error) {
+
+        } finally {
+          //this.work = {};
+          this.loading = false;
+          
+          this.renderedPhoto = '';
+          this.tags = [];
           this.editWork = false;
+    
+          this.work = {};
+          this.work.title = '';
+          this.work.link = '';
+          this.work.description = '';
+          this.work.techs = '';
+    
+          this.newWork = { ...this.work };
+    
+          this.validation.reset();
         }
-
-        this.work = {};
-        this.renderedPhoto = '';
-        this.tags = [];
-
-      } catch (error) {
-
-      } finally {
-        this.loading = false;
       }
-
     },
 
     renderImageFile(file) {
@@ -78,8 +137,11 @@ export default {
     },
     editeExistedWork(work) {
       this.work = work;
+      this.newWork = { ...this.work };
       this.editWork = true;
-
+      if (this.work.photo) {
+        this.renderedPhoto = 'https://webdev-api.loftschool.com/' + this.newWork.photo;
+      }
 
     }
   },
@@ -102,7 +164,6 @@ export default {
       }
     },
     'newWork.techs': function () {
-      console.log('newWork');
       if (this.newWork.techs) {
         this.tags = this.newWork.techs.split(', ');
       }
