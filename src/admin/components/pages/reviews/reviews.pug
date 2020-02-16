@@ -1,0 +1,44 @@
+section#reviews.reviews
+  .reviews__container.container
+    .title__container     
+      h2.h2__title  Блок «Отзывы»
+    section.reviews-edit.edit-block__container#reviews-edit(v-if="editReviews == true")
+      .edit-block Новый отзыв
+      form(@submit.prevent="newAddReviews(newReview)" :class="{blocked: loading}").edit__container.reviews-edit__block          
+        .reviews-edit__file.form
+          .file__container               
+            label.file__icon(
+              :class="{filled: renderedPhoto.length}"               
+              :style="renderedBackground"
+              )  
+              input(type="file" @change="handleFile").reviews__form-file-input       
+              .file__icon__svg()
+            .file__title Добавить фото
+
+        .reviews-input
+          .reviews-input__block
+            .form-add__item.reviews--input
+              label(for=`label1` class="form-label") Имя автора
+              .input-block__form-add
+                input(placeholder="" id=`label1` type="text" v-model="newReview.author").input-block.input--form-add
+            .form-add__item.reviews--input
+              label(for=`label2` class="form-label") Титул автора
+              .input-block__form-add
+                input(placeholder="" id=`label2` type="text" v-model="newReview.occ").input-block.input--form-add                   
+          .form-add__item
+            label(for=`label3` class="form-label") Отзывы
+            .input-block__form-add
+              textarea(v-model="newReview.text").textarea-block.textarea--form--add.reviews--textarea
+          .form-add__button
+            button.button-no-click.form-add--button-no-click(@click="ResetForm" type="reset") Отмена
+            button(type="submit" :disabled="loading").button-click.form-add--button-click.add-button Сохранить                
+    section.reviews-list#reviews-list
+      .reviews-list__container
+        .work-iteam.review-iteam--button(v-if="editReviews == false")
+          .block-iteam__container
+            .block-add-button__block
+              .block-add-button__container.block-add-button__container--reviews
+                button.block-add-button(@click="editReviews = true") +
+                .block-add-title Добавить Отзыв
+        .work-iteam.review-iteam(v-for="review in reviews" :key="review.id")          
+          review-iteam(:review="review" @editReview="editReview")

@@ -8,11 +8,11 @@ header.header
         .logo-name__title
           .logo-name__title__text Ивашов Иван
           .output__text.output__text--mobile
-            a(href="#auto").output__link Выйти
+            button(href="#auto" @click="logoutUser").output__link Выйти
     .name-panel
       .name-panel__container
         .name-panel__text Панель администрирования
     .output.output--decstope
       .output__container
         .output__text 
-          a(href="#auto").output__link Выйти
+          button(href="#auto" @click="logoutUser").output__link Выйти

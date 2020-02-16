@@ -134,7 +134,9 @@
   height: 100vh;
   min-height: 650px;
   max-height: 1100px;
-  background-image: url("../../../images/content/about-bg_d_1500.jpg");
+  background-image: url("../../../../images/content/about-bg_d_1500.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .login__contener {
   background-color: rgba(#2d3c4e, 0.9);
@@ -204,8 +206,13 @@
   width: 100%;
 }
 .form__item--error .icon--name {
-  background: svg-load("avatar.svg", fill=#cd1515, width=100%, height=100%) !important;
+  background: svg-load(
+    "avatar.svg",
+    fill=#cd1515,
+    width=100%,
+    height=100%
+  ) !important;
 }
-.form__item:focus-within .icon--name{
+.form__item:focus-within .icon--name {
   background: svg-load("avatar.svg", fill=#ff9a00, width=100%, height=100%);
 }

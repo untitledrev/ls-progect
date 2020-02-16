@@ -1,0 +1,26 @@
+
+.work-iteam__container
+  .block__image-block
+    .block__image
+      img(class="block__image__work-img" :src="reviewPhoto")
+    .block__tags
+      .tags__list
+        .tags__iteam.tags--works(v-for="tag in tags") 
+          .tags__iteam__title {{tag}}                 
+
+  .block__content
+    .block__title {{work.title}} 
+    .block__text {{work.description}} 
+    .block__link
+      a(:href="work.link" target="_blank" class="block__link__text") {{work.link}}
+    .block__button
+      .block__button__list
+          .block__button__item    
+            button(@click="editWork").block__button__item
+              .block__button__title Править                    
+              .block__button__icon.block__button__icon--pencil
+          .block__button__item              
+            button(@click="removeExistedWork").block__button__item
+              .block__button__title Удалить                    
+              .block__button__icon--cross.block__button__icon                         
+

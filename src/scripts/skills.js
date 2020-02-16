@@ -1,9 +1,12 @@
 import Vue from "vue";
-
+import '@babel/polyfill'
+import $axios from './requests';
 
 const skill = {
   template : "#skill",
-  props:  ["skillName","skillPercent"],
+  props:  {
+    skill: Object
+  },
   methods : {
 
        drawColoredCircle()
@@ -12,7 +15,7 @@ const skill = {
     const dasArray = parseInt(
       getComputedStyle(circle).getPropertyValue("stroke-dasharray")
     );
-    const percent = (dasArray / 100) * (100 - this.skillPercent);
+    const percent = (dasArray / 100) * (100 - this.skill.percent);
     circle.style.strokeDashoffset = percent;  
     }  
   },
@@ -48,10 +51,16 @@ components : {
   skillsRow
 },
 
-created ()
+async created ()
 {
-  const data = require("../data/skills.json");
-  this.skills = data;
+  try {
+    const { data } = await $axios.get("/categories/252");
+    this.skills = data;
+  }
+  catch (error) {
+
+  }
+
 }
 
 

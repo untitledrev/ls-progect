@@ -1,18 +1,20 @@
 script(type='text/x-template')#skills-list
   ul.skills__block__list.skills__block__contener
-    li.skills__block__item(v-for="skill in skills")
+    li.skills__block__item(
+      v-for="skill in skills"
+      v-if="skill.skills.length"
+      )
       skills-row(
         :skill="skill"
       )
 
 script(type='text/x-template')#skills-row
   .skill__contener
-      .skills__block__title {{skill.skillsGroup}}
+      .skills__block__title {{skill.category}}
       ul.skills__list
-          li(class=`skills__item` v-for="(skillPercent, skillName) in skill.skills")
+          li(class=`skills__item` v-for="skillItem in skill.skills")
             skill(
-              :skillName="skillName"
-              :skillPercent="skillPercent"
+              :skill="skillItem"
             )
 
 
@@ -24,4 +26,4 @@ script(type='text/x-template')#skill
         linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
           stop(offset="0%" stop-color="#d47e1d")
           stop(offset="100%" stop-color="#da8f22")
-      .skill__circle-text {{skillName}}
+      .skill__circle-text {{skill.title}}

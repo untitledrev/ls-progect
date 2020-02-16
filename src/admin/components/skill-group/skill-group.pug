@@ -1,0 +1,45 @@
+.plashka__container.plashka__container--new
+  .plashka-title__container
+    .input__container(v-if="editmode == false")
+      h2.input-block.input-block--skill-block-name.skill__info {{category.category}}
+      .plashka-title__button
+        .buttons-agree__container
+          .buttons-agree__list
+              .button-edit__iteam
+                button( class=`button-edit--pencil` @click="editmode = true").button-edit
+              .button-edit__iteam
+                button(@click="removeExistedCategory" class=`button-edit--trash`).button-edit
+    form.input__container(v-else)
+      input(placeholder="Название новой группы" v-model='category.category').input-block.input-block--skill-block-name
+      .plashka-title__button
+        .buttons-agree__container
+          .buttons-agree__list             
+                .button__iteam
+                  .button__container
+                    button(@click="editExistedCategory" class=`button--tick`).button-agree
+                .button__iteam
+                  .button__container
+                    button(class=`button--cross`  @click="editmode = false").button-agree                    
+               
+    .plashka__content
+      .skills__container
+        .skills__list          
+          skill-iteam(
+            v-for="skill in category.skills"
+            :key="skill.id"
+            :skill="skill"
+            )
+
+
+    .plashka__new-skill
+      form(@submit.prevent="addNewSkill" :class="{blocked: loading}").new-skill__container
+        .new-skill
+          input(placeholder="Название навыка"  v-model="skill.title" type="text").input-block.input--new-skill
+        .new-skill-procent
+          input(placeholder="100 %" v-model="skill.percent" type="number" min="1" max="100").input-block.input--new-skill-procent
+        .new-skill__button
+          button(
+            type="submit"
+            :disabled="loading"
+            ).add-button.add-button--big
+            .add-button__icon +

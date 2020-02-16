@@ -1,5 +1,5 @@
 script(type='text/x-template')#review-contener
- .container
+  .container
     .reviews__title__container.row
       h2.section-title.reviews__contact__title--text.lg-4 #{reviews_title}                
       .button__container
@@ -10,27 +10,24 @@ script(type='text/x-template')#review-contener
     .reviews-sliders.lg-8           
       .review-contener
         carousel(@page-change="" :perPageCustom="[[0,1],[768,2]]"   :paginationSize="1" :navigationEnabled="true"  )
-          slide(v-for="review in reviews" @slideclick="handleSlideClick"  data-index="0")
+          slide(v-for="review in reviews" @slideclick="handleSlideClick" data-index="0")
             reviewsrow(
-              :review="review"   
-             
-            )
-      
+              :review="review"  
+            )     
 
 
-script(type='text/x-template')#reviews-row
- 
-                      .reviews-slider
-                        .reviews-slider__icon-contener
-                          span.reviews-slider__icon
-                            +icon('quote','reviews-slider__icon__svg')
-                        .reviews-slider__text-contener
-                          .reviews-slider__text
-                            .reviews-slider__people {{review.review_text}}
-                            .people-info__contener
-                              .avatar.user__avatar
-                                img(:src="review.avatar" class="avatar__pic")
-                                //+image(`content/${review.avatar}`, "avatar__pic")
-                              .user__container
-                                .user__name  {{review.user__name}}
-                                .user_work {{review.user_work}}
+script(type='text/x-template')#reviews-row 
+  .reviews-slider
+    .reviews-slider__icon-contener
+      span.reviews-slider__icon
+        +icon('quote','reviews-slider__icon__svg')
+    .reviews-slider__text-contener
+      .reviews-slider__text
+        .reviews-slider__people {{review.text}}
+        .people-info__contener
+          .avatar.user__avatar
+            img(:src="review.photo" class="avatar__pic")
+            //+image(`content/${review.avatar}`, "avatar__pic")
+          .user__container
+            .user__name  {{review.author}}
+            .user_work {{review.occ}}

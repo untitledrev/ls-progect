@@ -1,0 +1,56 @@
+section#works.works
+  .works__container.container
+    .title__container
+      h2.h2__title Блок «Работы»
+    section.work-edit.edit-block__container#work-edit(v-if="editWork == true")
+      .edit-block.edit-block--work  Редактирование работы
+      form(@submit.prevent="newExengeAddWork(newWork)" :class="{blocked: loading}").edit__container.edit__container--work
+        .load-file__block
+          .load-file__container
+            label.load-file__form(
+              :class="{filled: renderedPhoto.length}"               
+              :style="renderedBackground"
+              )
+                .load-file__title Перетащите или загрузите для загрузки изображения
+                input(type="file" @change="handleFile").reviews__form-file-input     
+                div.button-click.add-button Загрузить
+        .form-add-work__block
+          .form-add-work__container
+            .form-add-work__list
+              .form-add__item
+                label(for=`label1` class="form-label") Название
+                .input-block__form-add
+                  input(placeholder="" id=`label1` v-model="newWork.title").input-block.input--form-add
+              .form-add__item
+                label(for=`label2` class="form-label") Ссылка
+                .input-block__form-add
+                  input(placeholder="" id=`label2`  v-model="newWork.link").input-block.input--form-add                      
+              .form-add__item
+                label(for=`label3` class="form-label") Описание
+                .input-block__form-add
+                  textarea(v-model="newWork.description").textarea-block.textarea--form-add
+              .form-add__item
+                label(for="label4" class="form-label") Добавление тэга
+                .input-block__form-add
+                  input(placeholder="" id="label4" v-model="newWork.techs").input-block.input--form-add
+                .tags__contener
+                  .tags__list
+                      .tags__iteam(v-for="(tag, index)  in tags") 
+                        .tags__iteam__title {{tag}}
+                        button.tags__iteam__icon.tags--cross(@click="delTag(index)")
+              .form-add__button
+                button(@click="editWork = false" type="reset").button-no-click.form-add--button-no-click Отмена
+                button(type="submit" :disabled="loading").button-click.form-add--button-click.add-button Сохранить      
+    section.works-list#works-list
+      .works-list__container
+        .work-iteam.work-iteam--button(v-if="editWork == false")
+          .block-iteam__container
+            .block-add-button__block
+              .block-add-button__container
+                button.block-add-button(@click="editWork = true") +
+                .block-add-title Добавить работу       
+        .work-iteam(v-for="work in works" :key="work.id")
+          work-iteam(         
+            :work="work"
+            @editeExistedWork="editeExistedWork"
+          )

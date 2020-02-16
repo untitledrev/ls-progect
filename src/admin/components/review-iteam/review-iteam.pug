@@ -1,0 +1,17 @@
+.work-iteam__container
+  .block__user
+    .user__avatar
+      img(:src=`reviewPhoto`)
+    .user__content
+      .user__name {{review.author}}
+      .user__pr {{review.occ}}                        
+  .block__content
+    .block__text {{review.text}}      
+    .block__button
+      .block__button__list
+        button(@click="editReview").block__button__item
+          .block__button__title Править                    
+          .block__button__icon.block__button__icon--pencil
+        button(@click="removeExistedReview").block__button__item
+          .block__button__title Удалить                    
+          .block__button__icon--cross.block__button__icon

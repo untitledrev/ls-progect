@@ -1,24 +1,16 @@
 <template lang="pug">
-  main#main.main
-    vc-header
-    vc-nav
-    router-view
-    vc-login
+  .root-wrapper
+    router-view(name="header")
+    router-view(name="tabs")
+    .page__wrapper
+      router-view
 </template>
 
 <script>
-
-import Login from './pages/login/login';
-import Header from "./components/header/header";
-import Nav from "./components/nav/nav";
-
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
-  components: {
-    vcHeader: Header,
-    vcNav: Nav,
-    vcLogin: Login
-  }
+  components: {}
 };
 </script>
 
@@ -95,11 +87,23 @@ export default {
   padding: 20px;
 }
 .about__list {
-  display: flex;
   margin-left: -30px;
+  flex-wrap: wrap;
+  display: flex;
 }
+.blocked {
+  opacity: 0.5;
+  filter: grayscale(100%);
+  pointer-events: none;
+  user-select: none;
+}
+.skill__info.input-block {
+  border-bottom: 1px solid #fff;
+}
+
 .about__iteam {
-  width: 50%;
+  width: 47%;
+  margin-bottom: 30px;
   margin-left: 30px;
 }
 
@@ -224,6 +228,7 @@ export default {
 
   background: svg-load("user.svg", fill=#ffffff, width=100%, height=100%);
 }
+
 .skill__item:first-child {
   margin-top: 0px;
 }
@@ -240,6 +245,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #c5c5c5;
 }
 .button-edit__list {
   display: flex;
@@ -309,8 +315,20 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   border: 1px dashed #a1a1a1;
+
+  &.filled {
+    background: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    & .load-file__title {
+      display: none;
+    }
+    & .button-click {
+      display: none;
+    }
+  }
 }
 .edit__container {
 }
@@ -406,11 +424,13 @@ export default {
   display: flex;
 }
 .work-iteam {
-  width: 32%;
+  width: 30%;
   margin-left: 30px;
+  margin-bottom: 30px;
 }
 .works-list__container {
   margin-left: -30px;
+  flex-wrap: wrap;
 }
 .block-add-button__container {
   min-height: 540px;
@@ -477,7 +497,7 @@ export default {
   display: flex;
 }
 .block__button__item {
-  width: 50%;
+  background: no-repeat;
   color: rgba(65, 76, 99, 0.5);
 }
 .block__link__text {
@@ -485,6 +505,7 @@ export default {
 }
 .block__button__item:last-child {
   justify-content: flex-end;
+  margin-left: auto;
 }
 .block__tags {
   position: absolute;
@@ -509,6 +530,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  &.filled {
+    background: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    & .file__icon__svg {
+      display: none;
+    }
+  }
 }
 
 .file__title {
@@ -538,10 +568,19 @@ export default {
 .reviews-list__container {
   display: flex;
   margin-left: -30px;
+  flex-wrap: wrap;
 }
+
+.reviews__form-file-input {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+}
+
 .review-iteam {
-  width: 32%;
+  width: 30%;
   margin-left: 30px;
+  margin-bottom: 30px;
 }
 .block-add-button__container--reviews {
   min-height: 380px;
@@ -602,6 +641,7 @@ main {
   text-decoration: underline;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
+  background: none;
 }
 .block__image__work-img {
 }
@@ -673,6 +713,7 @@ main {
     max-width: 500px;
     margin: 0 auto;
     margin-bottom: 10px;
+    float: none;
   }
   .works-list__container {
     display: block;
@@ -719,11 +760,10 @@ main {
   }
   .work-iteam--button,
   .review-iteam--button {
-   
   }
   .file__icon {
     margin: 0 auto;
-        margin-top: 10px;
+    margin-top: 10px;
   }
   .reviews-input {
     margin-top: 50px;
@@ -767,6 +807,7 @@ main {
   }
   .about__list {
   }
+
   .input-block--skill-block-name {
     margin-left: 30px;
   }
