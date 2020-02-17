@@ -50,6 +50,9 @@ export default {
     ...mapState("works", {
       works: state => state.works
     }),
+    ...mapState('user', {
+      userID: state => state.user.id
+    }),
     renderedBackground() {
       return this.renderedPhoto ? `background-image: url(${this.renderedPhoto});` : '';
     }
@@ -146,7 +149,7 @@ export default {
     }
   },
   created() {
-    this.fetchWork();
+    this.fetchWork(this.userID);
     this.newWork = { ...this.work };
 
     if (this.work.photo) {

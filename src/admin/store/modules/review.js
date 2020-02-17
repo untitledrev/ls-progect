@@ -38,9 +38,9 @@ export default {
 
     },
     /* Получение всех отзывов */
-    async fetchReview({ commit }) {
+    async fetchReview({ commit } , user) {
       try {
-        const { data } = await this.$axios.get("/reviews/252");
+        const { data } = await this.$axios.get(`/reviews/${user}`);
         commit("SET_REVIES", data);
 
       }

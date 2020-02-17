@@ -35,7 +35,7 @@ export default {
           localStorage.setItem("token", token);
           $axios.defaults.headers['Authorization'] = `Bearer ${token}`;
           this.$router.replace("/");
-          console.log(response);
+    
         } catch ({ message }) {
           this.showTooltip({ message, type: 'error' });
         }

@@ -57,9 +57,9 @@ export default {
         showErrorTooltip(context, error);
       }
     },
-    async fetchWork({ commit }) {
+    async fetchWork({ commit } , user) {
       try {
-        const { data } = await this.$axios.get("/works/252");
+        const { data } = await this.$axios.get(`/works/${user}`);
         commit("SET_WORK", data);
 
       }

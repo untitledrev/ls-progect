@@ -46,6 +46,9 @@ export default {
     ...mapState("review", {
       reviews: state => state.reviews
     }),
+    ...mapState('user', {
+      userID: state => state.user.id
+    }),
     renderedBackground() {
       return this.renderedPhoto ? `background-image: url(${this.renderedPhoto});` : '';
     }
@@ -132,7 +135,7 @@ export default {
 
   },
   created() {
-    this.fetchReview();
+    this.fetchReview(this.userID);
     this.newReview = { ...this.review };
 
     if (this.review.photo) {

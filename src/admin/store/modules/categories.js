@@ -85,9 +85,10 @@ export default {
     },
 
     /* Получение всех категорий */
-    async fetchCategories({ commit }) {
-      try {
-        const { data } = await this.$axios.get("/categories/252");
+    async fetchCategories({ commit }, user) {
+      try {       
+        
+        const { data } = await this.$axios.get(`/categories/${user}`);
         commit("SET_CATEGORIES", data);
 
       }

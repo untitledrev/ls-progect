@@ -24,26 +24,30 @@ export default {
   computed: {
     ...mapState("categories", {
       categories: state => state.categories
+    }),
+    ...mapState('user', {
+      userID: state => state.user.id
     })
   },
-  created() {
-    this.fetchCategories();
-  },
+
   methods: {
     ...mapActions("categories", ["addCategory", "fetchCategories"]),
+
     async addNewCategory() {
       if (await this.$validate()) {
-      try {
-        await this.addCategory(this.title);
-        this.newcatagory = false;
-        this.title = "";
-      } catch (error) {
-        console.log(error.message);
+        try {
+          await this.addCategory(this.title);
+          this.newcatagory = false;
+          this.title = "";
+        } catch (error) {
+          console.log(error.message);
+        }
+
+        //console.log(this.title);
       }
-
-      //console.log(this.title);
-    }
     }
 
+  }, created() {
+    this.fetchCategories(this.userID);
   }
 }
