@@ -1,8 +1,17 @@
 {
-  "text-color": "#414c63",
+  "color_title" : "#ffffff",
+  "sohibal_color" : "#716d69",
+  "text-color": "#ffffff",
+  "text-durk": "#333c49",
   "links-color": "#4b6fd7",
   "bp-desktop-hd": "1800px",
+  "container-desktop-hd": "1480px",  
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
-  "bp-phones": "480px"
+  "bp-phones": "480px",
+  "star__color":"#db0200",
+  "bg-site":"#212426",
+  "bg-skill":"#ffffff" ,
+  "base-size":"16px",
+  "base-hover-color":"#ff9a00"
 }

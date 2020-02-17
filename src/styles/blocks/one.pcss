@@ -1,6 +1,326 @@
-.link-class {
-  width: 100px;
-  height: 100px;
-  fill: red;
+.header
+{
 }
+.welcome , .about , .skills
+{
+ position: relative;
+ margin: 0 auto;
+}
+
+.parallax
+{
+    position: absolute;
+    width: 100%;
+    max-height: 2600px;
+    overflow: hidden; 
+}
+.top_fone_1
+{
+    margin: 0 auto;  
+}
+
+.avatar 
+{
+    border-radius: 50%;
+    overflow: hidden;  
+}
+
+.top-block
+{
+  padding-top:50px; 
+}
+
+.logo__link
+{
+  
+font-size: 36px; 
+font-weight: 800;
+color: $color_title;
+}
+
+.nav__list
+{
+ display:flex; 
+ justify-content: center;
+}
+.nav__item
+{
+    padding-left: 30px;
+    padding-right: 30px; 
+    padding-top: 16px; 
+    padding-bottom: 16px; 
+}
+
+.nav
+{
+
+color: $color_title;
+}
+.link-class
+{
+      width: 25PX;
+      fill: $sohibal_color;
+
+&:hover
+{    fill: $base-hover-color}
+
+}
+.sohibal__item
+{
+      display: inline-block;
+     margin-left: 40px; 
+
+
+}
+
+
+.footer__text_icon .sohibal__list .sohibal__item:hover
+{
+    border-color: $base-hover-color;
+}
+
+
+.sohibal__list
+{
+text-align: right;
+padding-top: 16px;  
+     margin-left: -40px;     
+}
+
+
+
+.one-block , .about
+{
+  height: 100vh; 
+  display: flex;
+  min-height: 650px;
+  max-height:1100px    
+}
+
+.one-block 
+{
+  position: relative;
+  flex-direction:column;
+  justify-content:space-between; 
+}
+.about
+{
+
+  align-items: center;
+  justify-content: center;
+
+}
+.nav__link
+{
+
+         display: block;
+
+   &:hover
+   {
+    color:#d47f1e; 
+   }      
+}
+
+
+.title-site
+{
+    display: flex;
+    justify-content: center;
+     flex: 1;
+    align-items: center;
+    justify-content: center;   
+    min-height: 125px;   
+}
+
+
+
+
+
+.title-site__left
+{
+    font-size: 18px;
+    line-height: 30px;  
+    text-align: right; 
+    font-weight: 600;  
+    color: rgba($color_title,0.4);     
+}
+
+.title-site__left__text , .title-site__right__text
+{
+  display:block;
+}
+
+.title-site__right
+{
+  font-size: 72px;
+    line-height: 60px;
+    font-weight: 800;
+    margin-left: 60px;
+      padding-top: 65px;   
+
+}
+.title-site
+{
+
+}
+.scroll__icon
+{
+ height: 30PX;
+ fill: #fff; 
+}
+
+
+.scroll__link
+{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;   
+
+    &:hover
+    {
+  color: #d47f1e;
+
+   & .scroll__icon
+    {
+    fill: #d47f1e;
+    }
+
+    }
+
+
+}
+
+.scroll__text
+{
+     font-weight: bold;
+    font-size: 18px; 
+
+ 
+}
+
+.scroll
+{
+    margin-bottom: 10vh;
+}
+
+.about__container 
+{
+     margin: 0 auto; 
+}
+.photo__my
+{
+ width:200px; 
+border-radius: 50%;
+    margin: 0 auto;
+     margin-right: 0px;   
+}
+.about__desciption
+{
+    padding-top: 72px;  
+}
+.about__right 
+{
+    padding-left: 115px;
+}
+
+.desciption-block__name
+{
+ display: inline-block; 
+ width: 50%;
+ color:rgba($color_title,0.15)
+}
+.desciption-block__desciption
+{
+   display: inline-block; 
+text-align: right;
+    width: 50%;
+}
+
+.desciption-block__item
+{
+    margin-bottom: 16px;
+}
+
+.desciption-block__list
+{
+     font-weight: 600; 
+}
+
+.about__title-mini
+{
+  font-weight: 600; 
+  color:rgba($color_title,0.50);
+}
+
+
+.about__title
+{
+  font-weight: 700;  
+  font-size:36px;
+  padding-top: $base-size;
+  padding-bottom: $base-size * 2;
+}
+.about__text
+{
+  font-weight: 600;
+  margin-bottom: 95px;
+  line-height: 30px;
+  color:rgba($color_title,0.50) ; 
+      margin-top: 30px;
+}
+
+.about__left 
+{
+     padding-right: 40px; 
+}
+
+.about__text-dop
+{
+  line-height: 30px;
+  font-style: italic;    
+  color:rgba($color_title,0.50); 
+
+  &:before
+  {
+    content: "*";
+    color: $star__color;
+    font-style: italic;
+    font-size: 3rem;
+    position: absolute;
+    margin-left: -60px;
+    margin-top: 10px;
+    opacity: 0.1;      
+  }
+
+}
+
+.about
+{
+  
+  background: linear-gradient(0deg, #1d1f23  50%, rgba(0, 0, 0, 0.65) 90%, rgba(0, 0, 0, 0) 100%);
+ 
+
+    &:after
+    {
+      content: " ";
+      background-image: url('../images/content/about-bg.jpg');
+      background-position: center bottom;
+      background-repeat: repeat-x;
+      width: 100%;
+      height: 248px;
+      position: absolute;
+        bottom: 0px;  
+    }
+
+ 
+
+}
+  .about__container
+    {
+    position: relative;
+    z-index: 1;
+    }
 

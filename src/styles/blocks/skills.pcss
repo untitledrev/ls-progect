@@ -1,0 +1,144 @@
+.skills__container
+{
+    margin: 0 auto;
+    margin-right: 0px;
+    padding-right: 100px;
+    min-height: 890px; 
+}
+.skills
+{
+  padding-bottom: 60px;
+  background-color:$bg-skill;
+}
+.skills-bg__container
+{
+  padding-top: 130px;
+  background-color:$bg-site;
+  background-image: url('../images/content/skill_phone-min.jpg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
+
+}
+.skills-bg2__container
+{
+  max-width: $bp-desktop-hd;
+  margin-top: 95px;
+  margin: 0 auto;
+    &:before
+    {
+    content:'';  
+    background-image: url('../images/content/ruki.png');
+    background-position: left bottom  ;
+    background-repeat: no-repeat;
+    width: 681px;
+    height: 982px;
+    margin-left: -60px;
+    position: absolute;
+    }
+
+}
+
+.skills__title
+{
+  line-height: 30px;
+  font-weight: bold;  
+  font-size:30px; 
+  margin-top: 20px;
+    margin-bottom: 55px;
+}
+.skills__text
+{
+ line-height: 30px;
+  color:rgba($color_title,0.50); 
+  max-width:600px;
+}
+
+.skills__block
+{
+  padding-left: 125px;
+    padding-top: 83px;
+}
+
+.skills__block__contener:nth-child(1)
+{
+      margin-top: 0px; 
+}
+
+.skills__block__contener
+{
+       margin-top: 15px;
+    &:nth-child(1)
+    {
+         margin-top: 0px;  
+    }
+    &:last-child 
+    {
+     padding-bottom: 120px;
+    }
+}
+
+
+
+.skills__block__title
+{
+  line-height: 30px;
+  font-weight: 700;  
+  font-size:24px;  
+    margin-bottom: 15px;
+}
+
+@-webkit-keyframes load {
+  0% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes load {
+  0% {
+    stroke-dashoffset: 0;
+  }
+}
+.skills__list {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  text-align: left;
+      margin-left: -40px;
+}
+.skills__item {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  color: rgba(#fff,0.5);
+  font-weight: 100;
+  margin-left: 22px;
+
+}
+
+.skills__item__title:after {
+ content: attr(data-name_skill);
+    position: absolute;
+    width: 100%;
+    top: 83px;
+    left: 0;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.skills__item__title svg
+{
+    width: 190px;
+}
+.skills__item__title  circle:nth-child(2)
+{
+stroke: #d47e1d;
+stroke-dashoffset:50;
+  stroke-width: 2px;
+}
+
+.skills__item__title  circle:nth-child(1)
+{
+  stroke: rgba(#fff,0.1);
+stroke-width: 0.8px;
+}

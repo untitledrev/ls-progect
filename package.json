@@ -9,7 +9,7 @@
     "reg": "node reg-util.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ivashov Ivan <untitledrev@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -50,7 +50,9 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "flexboxgrid": "^6.3.1",
     "normalize.css": "^8.0.1",
+    "postcss-math": "^0.0.10",
     "promptly": "^3.0.3",
     "pug": "^2.0.3",
     "request": "^2.88.0",
