@@ -448,7 +448,7 @@
   display: flex;
 }
 .work-iteam {
-  width: 30%;
+  width: calc(100% / 3 - 30px);
   margin-left: 30px;
   margin-bottom: 30px;
 }
@@ -637,6 +637,9 @@
   margin-right: 20px;
   overflow: hidden;
 }
+.user__avatar__image {
+  max-height: inherit;
+}
 main {
   margin-bottom: 50px;
 }
@@ -702,7 +705,7 @@ main {
     justify-content: center;
   }
   .work-iteam {
-    width: 50%;
+    width: calc(100% / 2 - 30px);
   }
   .reviews-input__block {
     display: block;
@@ -778,7 +781,7 @@ main {
 
   .work-iteam {
     width: 100%;
-    max-width: 400px;
+
     margin: 0 auto;
     margin-bottom: 10px;
   }
